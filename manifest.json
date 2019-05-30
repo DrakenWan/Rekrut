@@ -1,0 +1,24 @@
+{
+    "name": "hiring",
+    "version": "3.0",
+    "description": "for recruiters",
+     
+    "background":{
+        "scripts": ["./js/events.js"]
+    },
+    
+    "page_action":
+    {
+        "default_title": "Hiring ATS"
+    },
+
+    "content_scripts":
+    [{
+        "matches":["https://www.linkedin.com/*"],
+        "js":["./js/content.js"],
+        "css":["./css/slider.css"]
+    }],
+    "manifest_version": 2,
+    "permissions":["tabs", "activeTab", "<all_urls>", "declarativeContent", "notifications"],
+    "web_accessible_resources":["slider.html", "/css/slider.css", "/js/slider.js", "/js/material/material.min.css","/js/material/material.min.js","/js/material/material-design-iconic-font.min.css","./js/material/icon.css"]
+}
