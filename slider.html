@@ -65,7 +65,9 @@
 
 
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <label for="email">Email</label>
+                            <label for="email">Email</label><div class="tooltip1"> i
+                                <span class="tooltiptext1">Select "See contact info" text to retrieve email if it exists.</span>
+                            </div>
                             <input  class="mdl-textfield__input" type="text" id="email" name="email" placeholder="email address"/>
                             <label class="mdl-textfield__label" for="email"></label>
                         </div>
@@ -76,14 +78,18 @@
                             <label class="mdl-textfield__label"></label>
                         </div>
 
-
+                        <!-- below divs are just for verification of certain data values that wont be visible -->
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                 <label for="experience">Experience</label>
                                 <textarea rows=3 class="mdl-textfield__input" id="experience" form="userdetails"></textarea>
                                 <label class="mdl-textfield__label"></label>
                         </div>
                         
-                        
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <label for="schoolinfo">Education</label>
+                            <textarea rows=3 class="mdl-textfield__input" id="schoolinfo" form="userdetails"></textarea>
+                            <label class="mdl-textfield__label"></label>
+                        </div>
                         <input type="submit"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="submitDetails" name="submitDetails" value="Submit"/>
                 </form>
             </div>

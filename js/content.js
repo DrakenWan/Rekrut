@@ -42,10 +42,17 @@ class Job {
 }
 
 //education object
-var school = {
-  name:"",
-  degree:"",
-  duration:""
+class School {
+  constructor(){
+    this.institute = "";
+    this.degree = "";
+    this.field = "";
+    this.cgpa = 0.0;
+    this.duration = "";
+    this.time = "";
+    this.activities = "";
+    this.summary = "";
+  }
 }
 
 
@@ -141,7 +148,7 @@ var user = {
   //gets the experience array filling 
   //works perfectly unless linkedin loses its mind and changes their document format
    {
-     user.experience = [];
+     user.experience = []; //flush out old values from array
      var exp = document.getElementsByClassName("experience-section")[0];
      //console.log(exp);
      if(exp != undefined || exp != null) // if experience header is there or not
@@ -187,6 +194,7 @@ var user = {
                 if(doe) job.doe.push(doe.textContent.trim()); else job.doe.push("");
                 if(duration) job.duration.push(duration.textContent.trim()); else job.duration.push("");
                 if(location) job.location.push(location.lastElementChild.textContent.trim()); else job.location.push("");
+                this.experience.push(job);
               }
             }
           }
@@ -207,14 +215,66 @@ var user = {
             if(doe) job.doe.push(doe.firstElementChild.lastElementChild.textContent.trim()); else job.doe.push("");
             if(duration) job.duration.push(duration.lastElementChild.lastElementChild.textContent.trim()); else job.duration.push("");
             if(location) job.location.push(location.lastElementChild.textContent.trim()); else job.location.push("");
+            this.experience.push(job);
           }
         }// if condition to check if temp is #text
-        this.experience.push(job);
+        
       } //for loop for iterating over the ul list
      }//if cond for exp != null
-   }//getExperience method ends here
+   },//getExperience method ends here
 
-   
+   getEducation: function()
+   {
+     user.education = [] //flush out old values from array
+
+     if(document.getElementsByClassName("education-section")) //if education-section exists
+     {
+       var iterator = document.getElementsByClassName("education-section").firstElementChild.nextElementSibling;
+       var nodes = iterator.childNodes;
+
+       for(i=0; i<nodes.length; i++)
+       {
+        var school =  new School();
+        var node = nodes[i];
+        if(node.nodeName.toLowerCase() == "li")
+        {
+          node = node.firstElementChild.firstElementChild.firstElementChild; //the div right above above a & [div] elements
+          var a = node.firstElementChild;
+          var summary = node.firstElementChild.nextElementSibling;
+          if(summary)
+          {
+            school.summary = summary.firstElementChild.textContent.trim();
+          } else {school.summary = "";}
+          if(a)
+          {
+            a = a.firstElementChild.nextElementSibling;
+            var nameofinst = a.firstElementChild.firstElementChild;
+            var degree = a.firstElementChild.firstElementChild.nextElementSibling.lastElementChild;
+            var field = a.firstElementChild.firstElementChild.nextElementSibling.nextElementSibling.lastElementChild;
+            var cgpa = a.firstElementChild.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.lastElementChild;
+            if(nameofinst) school.institute = nameofinst.textContent.trim(); else school.institute = "";
+            if(degree) school.degree = degree.textContent.trim(); else school.degree = "";
+            if(field) school.field = field.textContent.trim(); else school.field = "";
+            if(cgpa) school.cgpa = cgpa.textContent.trim(); else school.cgpa = 0;
+
+            a = a.firstElementChild.nextElementSibling;
+            if(a)
+            {
+              var time = a.lastElementChild;
+              if(time) school.duration = time.textContent.trim(); 
+            } else school.duration = "";
+            a = a.nextElementSibling;
+            if(a)
+            {
+              var activities = a.lastElementChild;
+              if(activities) school.activities = activities.textContent.trim();
+            } else school.activities = "";
+          }
+          this.education.push(school);
+        } //if the node is "li" or not
+       }//for loop for iterating through the list of institutes
+     }// if condn for education-section's existence
+   }
 }// userProfile mirror object ends here
 
 
@@ -296,7 +356,7 @@ function extraction()
   user.getCurrentCompany();
   user.getLatestEducation();
   user.getEmail();
-  user.getExperience(document);
+  user.getExperience();
   resp.todo = "auto_extraction";
   resp.data = user;
   

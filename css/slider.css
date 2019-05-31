@@ -84,11 +84,18 @@ footer {
     position: relative;
     z-index: 4;
     float: right;
-    color: yellow;
+    background-color: yellow;
+    color: white;
     font-weight: bold;
     cursor: pointer;
+    padding: 5px 5px 5px 5px;
   }
   
+  .tooltip1:hover
+  {
+    box-shadow: 0 0 10px yellow;
+    transition: 0.3s;
+  }
   /* Tooltip text */
   .tooltip1 .tooltiptext1 {
     visibility: hidden;
