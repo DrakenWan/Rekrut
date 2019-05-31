@@ -49,7 +49,8 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse)
         var comp = getById("company");
         var edu = getById("education");
         var email = getById("email");
-        var exp = getById("experience");
+        var experience = getById("experience");
+        var schoolinfo = getById("schoolinfo");
 
         uname.value = user.name.trim();
         url.value = user.url.trim();
@@ -61,6 +62,7 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse)
         email.value = user.contact.email.trim();
         experience.value = JSON.stringify(user.experience);
         email.value = user.contact.email.trim();
+        schoolinfo.value = JSON.stringify(user.education);
         //anchor_ele.replaceWith(createElementManual("a","",user.resume.trim()))   //code for resume retrieval
     }
 })
@@ -74,7 +76,6 @@ chrome.tabs.query({active: true, currentWindow: true}, function(tab)
             chrome.tabs.sendMessage(tab[0].id, {todo: "auto_extraction_notbutton"});
         });
 });
-
 
 // form submisson code simple testing
 document.getElementById("submitDetails").addEventListener("click", function()
@@ -98,8 +99,6 @@ document.getElementById("submitDetails").addEventListener("click", function()
         chrome.tabs.sendMessage(tab[0].id, {todo: "reqServer", data: user});
     });
 });
-
-
 
 //creatElement
 function createElementManual(name, styleObj, href="")

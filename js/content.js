@@ -47,7 +47,7 @@ class School {
     this.institute = "";
     this.degree = "";
     this.field = "";
-    this.cgpa = 0.0;
+    this.cgpa = -1.0;
     this.duration = "";
     this.time = "";
     this.activities = "";
@@ -227,9 +227,9 @@ var user = {
    {
      user.education = [] //flush out old values from array
 
-     if(document.getElementsByClassName("education-section")) //if education-section exists
+     if(document.getElementsByClassName("education-section")[0]) //if education-section exists
      {
-       var iterator = document.getElementsByClassName("education-section").firstElementChild.nextElementSibling;
+       var iterator = document.getElementsByClassName("education-section")[0].firstElementChild.nextElementSibling;
        var nodes = iterator.childNodes;
 
        for(i=0; i<nodes.length; i++)
@@ -239,7 +239,8 @@ var user = {
         if(node.nodeName.toLowerCase() == "li")
         {
           node = node.firstElementChild.firstElementChild.firstElementChild; //the div right above above a & [div] elements
-          var a = node.firstElementChild;
+          if(node.nodeName.toLowerCase() == "div") var a = node.firstElementChild;
+          if(node.nodeName.toLowerCase() == "a") var a = node;
           var summary = node.firstElementChild.nextElementSibling;
           if(summary)
           {
@@ -248,14 +249,26 @@ var user = {
           if(a)
           {
             a = a.firstElementChild.nextElementSibling;
-            var nameofinst = a.firstElementChild.firstElementChild;
-            var degree = a.firstElementChild.firstElementChild.nextElementSibling.lastElementChild;
-            var field = a.firstElementChild.firstElementChild.nextElementSibling.nextElementSibling.lastElementChild;
-            var cgpa = a.firstElementChild.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.lastElementChild;
-            if(nameofinst) school.institute = nameofinst.textContent.trim(); else school.institute = "";
-            if(degree) school.degree = degree.textContent.trim(); else school.degree = "";
-            if(field) school.field = field.textContent.trim(); else school.field = "";
-            if(cgpa) school.cgpa = cgpa.textContent.trim(); else school.cgpa = 0;
+            if(a)
+            {
+              var nameofinst = a.firstElementChild.firstElementChild;
+              var degree = a.firstElementChild.firstElementChild.nextElementSibling;
+              var field = a.firstElementChild.firstElementChild.nextElementSibling;
+              var cgpa = a.firstElementChild.firstElementChild.nextElementSibling;
+              if(nameofinst) school.institute = nameofinst.textContent.trim(); else school.institute = "";
+              if(degree) school.degree = degree.lastElementChild.textContent.trim(); else school.degree = "";
+              if(field) 
+              {
+                if(field.nextElementSibling) school.field = field.nextElementSibling.lastElementChild.textContent.trim(); else school.field = "";
+              }
+              if(cgpa) 
+              {
+               if(cgpa.nextElementSibling)
+               {
+                 if(cgpa.nextElementSibling.nextElementSibling)school.cgpa = parseFloat(cgpa.nextElementSibling.nextElementSibling.lastElementChild.textContent.trim()); else school.cgpa = -1.0;  
+               }
+              }
+            }
 
             a = a.firstElementChild.nextElementSibling;
             if(a)
@@ -357,6 +370,7 @@ function extraction()
   user.getLatestEducation();
   user.getEmail();
   user.getExperience();
+  user.getEducation();
   resp.todo = "auto_extraction";
   resp.data = user;
   
