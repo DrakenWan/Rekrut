@@ -1,5 +1,5 @@
 {
-    "name": "hiring",
+    "name": "Rekrut",
     "version": "3.0",
     "description": "for recruiters",
      
@@ -9,7 +9,7 @@
     
     "page_action":
     {
-        "default_title": "Hiring ATS"
+        "default_title": "Linkedin scraper for recruiters"
     },
 
     "content_scripts":
@@ -19,6 +19,6 @@
         "css":["./css/slider.css"]
     }],
     "manifest_version": 2,
-    "permissions":["tabs", "activeTab", "<all_urls>", "declarativeContent", "notifications"],
+    "permissions":["tabs", "activeTab", "<all_urls>", "declarativeContent", "notifications", "http://localhost:3000/*"],
     "web_accessible_resources":["slider.html", "/css/slider.css", "/js/slider.js", "/js/material/material.min.css","/js/material/material.min.js","/js/material/material-design-iconic-font.min.css","./js/material/icon.css"]
 }

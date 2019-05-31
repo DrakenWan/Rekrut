@@ -65,6 +65,7 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse)
         schoolinfo.value = JSON.stringify(user.education);
         //anchor_ele.replaceWith(createElementManual("a","",user.resume.trim()))   //code for resume retrieval
     }
+    sendResponse("yes i got it!");  
 })
 
 // sendMessage for automatic extraction of the data from profile
@@ -80,8 +81,13 @@ chrome.tabs.query({active: true, currentWindow: true}, function(tab)
 // form submisson code simple testing
 document.getElementById("submitDetails").addEventListener("click", function()
 {
-    var uname = document.getElementById("uname").value;
-    alert("Data for " + uname + " has been stored.");
+    chrome.tabs.query({active: true, currentWindow: true}, function(tab)
+    {
+        chrome.tabs.sendMessage(tab[0].id, {todo:"send_data_to_server"},function()
+        {
+            console.log("Sending data to content-script");
+        });
+    });
 });
 
 // the code is itself descriptive

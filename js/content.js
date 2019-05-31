@@ -47,7 +47,7 @@ class School {
     this.institute = "";
     this.degree = "";
     this.field = "";
-    this.cgpa = -1.0;
+    this.grade = -1.0;
     this.duration = "";
     this.time = "";
     this.activities = "";
@@ -223,6 +223,8 @@ var user = {
      }//if cond for exp != null
    },//getExperience method ends here
 
+
+   // the below code needs to be changed
    getEducation: function()
    {
      user.education = [] //flush out old values from array
@@ -265,7 +267,7 @@ var user = {
               {
                if(cgpa.nextElementSibling)
                {
-                 if(cgpa.nextElementSibling.nextElementSibling)school.cgpa = parseFloat(cgpa.nextElementSibling.nextElementSibling.lastElementChild.textContent.trim()); else school.cgpa = -1.0;  
+                 if(cgpa.nextElementSibling.nextElementSibling)school.grade = parseFloat(cgpa.nextElementSibling.nextElementSibling.lastElementChild.textContent.trim()); else school.grade = -1.0;  
                }
               }
             }
@@ -275,13 +277,14 @@ var user = {
             {
               var time = a.lastElementChild;
               if(time) school.duration = time.textContent.trim(); 
-            } else school.duration = "";
-            a = a.nextElementSibling;
-            if(a)
-            {
-              var activities = a.lastElementChild;
-              if(activities) school.activities = activities.textContent.trim();
-            } else school.activities = "";
+              
+              a = a.nextElementSibling;
+              if(a)
+              {
+                var activities = a.lastElementChild;
+                if(activities) school.activities = activities.textContent.trim();
+              }
+            } 
           }
           this.education.push(school);
         } //if the node is "li" or not
@@ -374,11 +377,16 @@ function extraction()
   resp.todo = "auto_extraction";
   resp.data = user;
   
+  chrome.runtime.sendMessage(resp,function(msg)
+  {
+    console.log("Auto extraction message sent."+msg);
+  });
+}
+  /*
   chrome.runtime.sendMessage(resp, function()
     {
       console.info("Auto extraction message sent!");
-    });
-}
+    });*/
 
 //request accepted from events.js page to toggle the slider
   chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse)
@@ -387,8 +395,14 @@ function extraction()
     {
       toggle();
     }
-});
 
+    if(msg.todo == "send_data_to_server")
+    {
+      console.log("Hi karry here");
+    }
+
+    sendResponse("succssfull");
+});
 
 // nothing to bother about : just for testing purposes : run along
 // just don't delete it
@@ -406,6 +420,9 @@ function toggle()
         iframe.style.width = "0px";
     }
 }
+
+
+//server the server
 
 
 /* Residual code that might come handy in future
@@ -450,3 +467,8 @@ function purifyString(string)
   string = string.trim();
   return string;
 }
+
+/*
+कार्तिकेय कौल
+आकांक्षी डेटा वैज्ञानिक
+*/

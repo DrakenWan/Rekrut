@@ -26,30 +26,4 @@ chrome.pageAction.onClicked.addListener(function(){
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
         chrome.tabs.sendMessage(tabs[0].id,{todo: "toggle"});
     })
-
 });
-
-//sendRequest to server
-chrome.runtime.onMessage.addListener(
-function(request, sender, sendResponse)
-{
-    if(request.todo == "reqServer")
-    {
-        chrome.tabs.query({active: true, currentWindow:true}, function(tabs){
-
-        });
-    }
-});
-
-//function for server requqest
-function requestServer(data)
-{
-    var xj = new XMLHttpRequest();
-    xj.open("POST", "http://localhost:3000/log", true);
-    xj.setRequestHeader("Content-Type", "application/json");
-    xj.send(JSON.stringify({action: "data", data: data}));
-    xj.onreadystatechange = function()
-    {
-        alert("doooone!");
-    }
-}
