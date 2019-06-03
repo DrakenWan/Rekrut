@@ -49,7 +49,6 @@ class School {
     this.field = "";
     this.grade = -1.0;
     this.duration = "";
-    this.time = "";
     this.activities = "";
     this.summary = "";
   }
@@ -398,11 +397,17 @@ function extraction()
 
     if(msg.todo == "send_data_to_server")
     {
-      console.log("Hi karry here");
+      var hr = new XMLHttpRequest();
+      var url = "http://localhost:3000/";
+      var data = JSON.stringify(user);
+      hr.open("POST", url, true);
+      hr.setRequestHeader("Content-type", "application/json");
+      hr.send(data);
     }
 
-    sendResponse("succssfull");
+    sendResponse("successfull");
 });
+
 
 // nothing to bother about : just for testing purposes : run along
 // just don't delete it
