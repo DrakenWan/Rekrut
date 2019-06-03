@@ -5,6 +5,7 @@
 The extension makes use of material design as well as my own css customizations.
 This currenly a work in progress. So far I have scraped the profile headline area, experience and education section. These three are major information of extraction besides skillset. I will attempt to retrieve an array of skillsets soon.</p>
 <p>The code strives to not rely much on css but rather the DOM content of the page. I am actually traversing through the DOM nodes rather than directly retrieving through 'css' classes or ids.
+</p>
  I am scraping content by accessing sections that are supposedly going to stay with their designated class names for a long time. I feel confident that linkedin would take one or two years to change the model of their DOM content. But I will be on the lookout to change the scraping code if there is any change soon. Certain scraping functionalitites can be easily disabled by just removing their method calls if the code changes.</p>
 <p>
 By the way the code stats state that there 67.2% CSS involved. That is true and it sucks. Suck why? because I am still learning a lot about chrome extensions and so far I have not been able to set permissions for external urls or links to import stylesheets or scripts. I don't know yet how to work around that so I had to download the stylesheet libraries directly into the dirctory.
