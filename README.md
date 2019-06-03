@@ -22,3 +22,9 @@ The "submit" button does not do anything right now. I am planning to link it wit
 I have been unable to implement a modular system in my chrome extension. That is, I am trying to create multiple js files and share variables and functionalities between them. I have tried every possible solution (both of which I've thought and given on the internet). One last solution, I tried was to include scripts in background.html page. However, the chrome APIs stop working once I import the scripts into my content-script pages. I removed and mapped-down the entire code and reduced the number of main js files down to only three. There are three major communicating files: content.js (content script file), events.js (the file working in background. handlign all API calls) and slider.js (the js file associated with slider.html. Sending API calls to content script back and forth).
 I have tried a brave attempt at making UI satisfactory but I am a bit flambuoyant and unnecessary colours might have crept in so I would love to receive some words of the wise.
 </p>
+
+## RekrutServer testing the submit code
+<p>
+The code has been changed a bit. When the user clicks on submit. The details will be sent to the node server with an XMLHttpRequest and the node server will process the object received and save it to the mongodb collection. </p>
+<p>
+You can find the <a href="./testing/RekrutServer/rekrut.js">server</a> file in the RekrutServer folder that is itself within testing folder. The file can be directly run into your cmd system. Just ensure you have node.js installed in your system and node executable is within the path. then type <code>node rekrut.js</code> within the same directory.</p>
