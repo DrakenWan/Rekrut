@@ -125,7 +125,7 @@ var user = {
   {
     if(document.getElementsByClassName(templateIN.summary)[0])
     {
-      user.summary = document.getElementsByClassName(templateIN.summary)[0].textContent.trim();
+      user.summary = purifyString(document.getElementsByClassName(templateIN.summary)[0].textContent);
     } else {user.summary = ""}
   },
   getEmail: function()

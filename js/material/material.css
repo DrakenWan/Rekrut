@@ -3871,13 +3871,13 @@ ul, ol {
   .mdl-button:hover {
     background-color: rgba(158,158,158, 0.20); }
   .mdl-button:focus:not(:active) {
-    background-color: rgba(0,0,0, 0.12); }
+    background-color: #4875B4; }
   .mdl-button:active {
     background-color: rgba(158,158,158, 0.40); }
   .mdl-button.mdl-button--colored {
     color: rgb(63,81,181); }
     .mdl-button.mdl-button--colored:focus:not(:active) {
-      background-color: rgba(0,0,0, 0.12); }
+      background-color: #4875B4; }
 
 input.mdl-button[type="submit"] {
   -webkit-appearance: none; }
@@ -4015,11 +4015,11 @@ input.mdl-button[type="submit"] {
   background-color: transparent; }
 
 .mdl-button--fab[disabled][disabled], .mdl-button--fab.mdl-button--disabled.mdl-button--disabled {
-  background-color: rgba(0,0,0, 0.12);
+  background-color: #4875B4;
   color: rgba(0,0,0, 0.26); }
 
 .mdl-button--raised[disabled][disabled], .mdl-button--raised.mdl-button--disabled.mdl-button--disabled {
-  background-color: rgba(0,0,0, 0.12);
+  background-color: #4875B4;
   color: rgba(0,0,0, 0.26);
   box-shadow: none; }
 
@@ -6207,7 +6207,7 @@ input.mdl-button[type="submit"] {
     cursor: auto;
     transition: none; }
   .mdl-icon-toggle.is-focused .mdl-icon-toggle__label {
-    background-color: rgba(0,0,0, 0.12); }
+    background-color: #4875B4; }
   .mdl-icon-toggle.is-focused.is-checked .mdl-icon-toggle__label {
     background-color: rgba(63,81,181, 0.26); }
 
@@ -6854,7 +6854,7 @@ input.mdl-button[type="submit"] {
   .mdl-menu__item::-moz-focus-inner {
     border: 0; }
   .mdl-menu__item--full-bleed-divider {
-    border-bottom: 1px solid rgba(0,0,0, 0.12); }
+    border-bottom: 1px solid #4875B4; }
   .mdl-menu__item[disabled], .mdl-menu__item[data-mdl-disabled] {
     color: rgb(189,189,189);
     background-color: transparent;
@@ -8462,11 +8462,11 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
 .mdl-slider__background-flex > .mdl-slider__background-upper {
       left: 6px; }
     .mdl-slider.is-upgraded.is-lowest-value:focus:not(:active)::-webkit-slider-thumb {
-      box-shadow: 0 0 0 10px rgba(0,0,0, 0.12);
-      background: rgba(0,0,0, 0.12); }
+      box-shadow: 0 0 0 10px #4875B4;
+      background: #4875B4; }
     .mdl-slider.is-upgraded.is-lowest-value:focus:not(:active)::-moz-range-thumb {
-      box-shadow: 0 0 0 10px rgba(0,0,0, 0.12);
-      background: rgba(0,0,0, 0.12); }
+      box-shadow: 0 0 0 10px #4875B4;
+      background: #4875B4; }
     .mdl-slider.is-upgraded.is-lowest-value:active::-webkit-slider-thumb {
       border: 1.6px solid rgba(0,0,0, 0.26);
       -webkit-transform: scale(1.5);
@@ -8480,7 +8480,7 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
     .mdl-slider.is-upgraded.is-lowest-value::-ms-thumb {
       background: radial-gradient(circle closest-side, transparent 0%, transparent 66.67%, rgba(0,0,0, 0.26) 66.67%, rgba(0,0,0, 0.26) 100%); }
     .mdl-slider.is-upgraded.is-lowest-value:focus:not(:active)::-ms-thumb {
-      background: radial-gradient(circle closest-side, rgba(0,0,0, 0.12) 0%, rgba(0,0,0, 0.12) 25%, rgba(0,0,0, 0.26) 25%, rgba(0,0,0, 0.26) 37.5%, rgba(0,0,0, 0.12) 37.5%, rgba(0,0,0, 0.12) 100%);
+      background: radial-gradient(circle closest-side, #4875B4 0%, #4875B4 25%, rgba(0,0,0, 0.26) 25%, rgba(0,0,0, 0.26) 37.5%, #4875B4 37.5%, #4875B4 100%);
       transform: scale(1); }
     .mdl-slider.is-upgraded.is-lowest-value:active::-ms-thumb {
       transform: scale(0.5625);
@@ -9584,7 +9584,7 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
     background: rgba(63,81,181, 0.5); }
   .mdl-switch__track fieldset[disabled] .mdl-switch,
   .mdl-switch.is-disabled .mdl-switch__track {
-    background: rgba(0,0,0, 0.12);
+    background: #4875B4;
     cursor: auto; }
 
 .mdl-switch__thumb {
@@ -10139,7 +10139,7 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
 
 .mdl-textfield__input {
   border: none;
-  border-bottom: 1px solid rgba(0,0,0, 0.12);
+  border-bottom: 1px solid #4875B4; /*#4875B4*/
   display: block;
   font-size: 16px;
   font-family: "Helvetica", "Arial", sans-serif;
@@ -10162,7 +10162,7 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
   fieldset[disabled] .mdl-textfield .mdl-textfield__input,
   .mdl-textfield.is-disabled .mdl-textfield__input {
     background-color: transparent;
-    border-bottom: 1px dotted rgba(0,0,0, 0.12);
+    border-bottom: 1px dotted #4875B4;
     color: rgba(0,0,0, 0.26); }
 
 .mdl-textfield textarea.mdl-textfield__input {
