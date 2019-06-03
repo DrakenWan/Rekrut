@@ -208,12 +208,12 @@ var user = {
             var companyName = data_div.nextElementSibling.lastElementChild; 
             var doe = data_div.nextElementSibling.nextElementSibling;
             var duration = data_div.nextElementSibling.nextElementSibling;
-            var location = data_div.nextElementSibling.nextElementSibling.nextElementSibling;
+            var location = data_div.nextElementSibling.nextElementSibling;
             
             if(companyName) job.company = companyName.textContent.trim(); else job.company = "";
             if(doe) job.doe.push(doe.firstElementChild.lastElementChild.textContent.trim()); else job.doe.push("");
             if(duration) job.duration.push(duration.lastElementChild.lastElementChild.textContent.trim()); else job.duration.push("");
-            if(location) job.location.push(location.lastElementChild.textContent.trim()); else job.location.push("");
+            if(location) job.location.push(location.nextElementSibling.lastElementChild.textContent.trim()); else job.location.push("");
             this.experience.push(job);
           }
         }// if condition to check if temp is #text
