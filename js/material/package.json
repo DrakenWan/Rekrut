@@ -73,5 +73,8 @@
     "presets": [
       "es2015"
     ]
+  },
+  "dependencies": {
+    "@material/textfield": "^2.3.0"
   }
 }

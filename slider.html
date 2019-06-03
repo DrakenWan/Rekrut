@@ -9,22 +9,27 @@
         <script src="./js/material/material.min.js"></script>
     </head>
     <body >
-
-        <!-- CLOSE EXTENSION BUTTON -->
-        <abbr title="Close the sidebar">
-        <div id="closebtn" class="closebtn button">
-            <span id="closeicon">&times;</span>
-        </div></abbr>
-
-        <!-- Simple Tooltip -->
-        <div class="tooltip1"> info!
-            <span class="tooltiptext1">Please select "show more..." to retrieve all information properly.</span>
-        </div>
-
         <!-- header attempting miserably to add one -->
         <!-- header has custom css trying to emulate a material design style. if possible do add material design css -->
         <header id="myhead">
+            <!-- CLOSE EXTENSION BUTTON -->
+            <abbr title="Close the sidebar">
+                <div id="closebtn" class="closebtn button">
+                    <span id="closeicon">&times;</span>
+                </div>
+            </abbr>
+            <div id="title">
             Rekrut
+            </div>
+
+                <!-- Simple Tooltip -->
+            <div class="tooltip1"> info!
+                    <span class="tooltiptext1"> Please select "show more..." to retrieve all information properly.</span>
+                </div>
+            
+                <div class="tooltip1"> Tip!
+                    <span class="tooltiptext1">Scrolling Helps!<br/> If nothing works, scroll through the webpage and it might work. ;)</span>
+                </div>
         </header>
         
         <section>
@@ -33,39 +38,39 @@
                 <form name="userdetails">
                         <img alt="profile Pic" id="proPic"/> <br/>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <label for="uname">Candidate Name</label>
+                            <label class="labels" for="uname">Candidate Name</label>
                             <input class="mdl-textfield__input" type="text" id="uname" name="uname"/>
                             <label class="mdl-textfield__label" for="uname"></label>
                         </div>
 
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <label for="url">Profile URL</label>
+                            <label class="labels" for="url">Profile URL</label>
                             <input class="mdl-textfield__input" type="text" id="url" name="url" placeholder="linkedin url"/>
                             <label class="mdl-textfield__label" for="url"></label>
                         </div>
         
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <label for="location">Location</label>
+                            <label class="labels" for="location">Location</label>
                             <input class="mdl-textfield__input" type="text" id="location" name="location" placeholder="location"/>
-                            <label class="mdl=mdl-textfield__label" for="location"></label>
+                            <label class="mdl-textfield__label" for="location"></label>
                         </div>
 
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <label for="company">Current Company</label>
+                            <label class="labels" for="company">Current Company</label>
                             <input class="mdl-textfield__input" type="text" id="company" name="company" placeholder="company name"/> 
                             <label class="mdl-textfield__label" for="company"></label>
                         </div>
 
 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <label for="education">Education</label>
+                            <label class="labels" for="education">Education</label>
                             <input  class="mdl-textfield__input" type="text" id="education" name="education" placeholder="education institute"/>
                             <label class="mdl-textfield__label" for="education"></label>
                     </div>
 
 
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <label for="email">Email</label><div class="tooltip1"> i
+                            <label class="labels" for="email">Email</label><div class="tooltip1"> i
                                 <span class="tooltiptext1">Select "See contact info" text to retrieve email if it exists.</span>
                             </div>
                             <input  class="mdl-textfield__input" type="text" id="email" name="email" placeholder="email address"/>
@@ -73,20 +78,20 @@
                         </div>
                         
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <label for="summary">Summary</label>
+                            <label class="labels" for="summary">Summary</label>
                             <textarea rows=3 class="mdl-textfield__input" id="summary" form="userdetails"></textarea>
                             <label class="mdl-textfield__label"></label>
                         </div>
 
                         <!-- below divs are just for verification of certain data values that wont be visible -->
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <label for="experience">Experience</label>
+                                <label class="labels" for="experience">Experience</label>
                                 <textarea rows=3 class="mdl-textfield__input" id="experience" form="userdetails"></textarea>
                                 <label class="mdl-textfield__label"></label>
                         </div>
                         
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <label for="schoolinfo">Education</label>
+                            <label class="labels" for="schoolinfo">Education</label>
                             <textarea rows=3 class="mdl-textfield__input" id="schoolinfo" form="userdetails"></textarea>
                             <label class="mdl-textfield__label"></label>
                         </div>

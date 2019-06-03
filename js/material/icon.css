@@ -28,14 +28,14 @@
   font-weight: bold;
   left: 5%;
   top: 5%;
-  text-shadow: 0 0 10px blue;
+  text-shadow: 0 0 10px #4875B4;
 }
 
 #closeicon:hover
 {
   transition: 0.5s;
   font-size: 42px;
-  text-shadow: 0 5px 20px blue;
+  text-shadow: 0 5px 20px #4875B4;
   transition: 0.1s;
   cursor: pointer;
 }

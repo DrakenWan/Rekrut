@@ -1,5 +1,9 @@
 # Rekrut
-<p> Rekrut is a chrome extension that will help a person scrape a linkedin profile by visiting. It works automatically. You just have to visit the profile page.
+<p> Rekrut is a chrome extension that will help a person scrape a linkedin profile by visiting. It works automatically. You just have to visit the profile page. 
+</p>
+<p>
+By the way the code stats state that there 67.2% CSS involved. That is true and it sucks. Suck why? because I am still learning a lot about chrome extensions and so far I have not been able to set permissions for external urls or links to import stylesheets or scripts. I don't know yet how to work around that so I had to download the stylesheet libraries directly into the dirctory.
+I hate it honestly but I had to. I will soon find a workaround though.
 </p>
 <p>
 The extension makes use of material design as well as my own css customizations.
@@ -28,3 +32,9 @@ I have tried a brave attempt at making UI satisfactory but I am a bit flambuoyan
 The code has been changed a bit. When the user clicks on submit. The details will be sent to the node server with an XMLHttpRequest and the node server will process the object received and save it to the mongodb collection. </p>
 <p>
 You can find the <a href="./testing/RekrutServer/rekrut.js">server</a> file in the RekrutServer folder that is itself within testing folder. The file can be directly run into your cmd system. Just ensure you have node.js installed in your system and node executable is within the path. then type <code>node rekrut.js</code> within the same directory.</p>
+
+## Sucky UI
+<p>
+According to me the UI sucks big time. Over time I have shifted the theme to the linkedin website. There might be some shoddy UI workmanship that would've crept in. I try my best a developer to make things better at frontend but I suck big time.
+Any suggestions are welcome. I have made use of material design lite (not web components) as well as my own css customisation.
+</p>

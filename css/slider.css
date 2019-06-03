@@ -67,6 +67,7 @@ footer {
 #myhead, #myfoot
 {
     box-shadow: 0 0 10px slategray;
+    border: 1px solid black;
 }
 
 #author
@@ -84,16 +85,18 @@ footer {
     position: relative;
     z-index: 4;
     float: right;
-    background-color: yellow;
+    background-color: #4875B4;
     color: white;
-    font-weight: bold;
     cursor: pointer;
     padding: 5px 5px 5px 5px;
+    margin: 5px 5px 5px 5px;
+    font-weight: bold;
+    font-size: 12px;
   }
   
   .tooltip1:hover
   {
-    box-shadow: 0 0 10px yellow;
+    box-shadow: 0 0 10px #4875B4;
     transition: 0.3s;
   }
   /* Tooltip text */
@@ -108,13 +111,26 @@ footer {
    
     /* Position the tooltip text - see examples below! */
     position: absolute;
-    z-index: 4;
-    top: 10px;
+    top: 40px;
+    z-index: 10px;
     right: 105%;
-
+    font-size: 12px;
+    text-align: center;
   }
   
-  /* Show the tooltip text when you mouse over the tooltip container */
-  .tooltip1:hover .tooltiptext1 {
-    visibility: visible;
-  }
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip1:hover .tooltiptext1 {
+visibility: visible;
+}
+
+.labels
+{
+    float: left;
+    color: #4875B4;
+    font-size: 12px;
+}
+
+#mdl-button
+{
+    background-color:#4875B4;
+}
