@@ -67,7 +67,6 @@ footer {
 #myhead, #myfoot
 {
     box-shadow: 0 0 10px slategray;
-    border: 1px solid black;
 }
 
 #author
