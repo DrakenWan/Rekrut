@@ -51,6 +51,7 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse)
         var email = getById("email");
         var experience = getById("experience");
         var schoolinfo = getById("schoolinfo");
+        var summary = getById("summary");
 
         uname.value = user.name.trim();
         url.value = user.url.trim();
@@ -63,6 +64,7 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse)
         experience.value = JSON.stringify(user.experience);
         email.value = user.contact.email.trim();
         schoolinfo.value = JSON.stringify(user.education);
+        summary.value = user.summary.trim();
         //anchor_ele.replaceWith(createElementManual("a","",user.resume.trim()))   //code for resume retrieval
     }
     sendResponse("yes i got it!");  

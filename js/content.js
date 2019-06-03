@@ -15,7 +15,7 @@ var templateIN = {
   url: "",
   location: "pv-top-card-section__location",
   image: "pv-top-card-section__photo",
-//summary: "pv-top-card-section__summary-text", // reducing data overhead
+  summary: "pv-top-card-section__summary-text", // reducing data overhead
   company: {
     name: "pv-top-card-v2-section__company-name",
   },
@@ -62,6 +62,7 @@ var user = {
   name: "",
   url: "",
   location: "",
+  summary: "",
   image: undefined,
   company: {
     name: ""
@@ -119,6 +120,13 @@ var user = {
     {
     user.current_education.name = document.getElementsByClassName(templateIN.current_education.name)[0].textContent;
     } else { user.current_education.name = ""}
+  },
+  getSummary: function()
+  {
+    if(document.getElementsByClassName(templateIN.summary)[0])
+    {
+      user.summary = document.getElementsByClassName(templateIN.summary)[0].textContent.trim();
+    } else {user.summary = ""}
   },
   getEmail: function()
   {
@@ -213,7 +221,7 @@ var user = {
             if(companyName) job.company = companyName.textContent.trim(); else job.company = "";
             if(doe) job.doe.push(doe.firstElementChild.lastElementChild.textContent.trim()); else job.doe.push("");
             if(duration) job.duration.push(duration.lastElementChild.lastElementChild.textContent.trim()); else job.duration.push("");
-            if(location) job.location.push(location.nextElementSibling.lastElementChild.textContent.trim()); else job.location.push("");
+            if(location.nextElementSibling) job.location.push(location.lastElementChild.textContent.trim()); else job.location.push("");
             this.experience.push(job);
           }
         }// if condition to check if temp is #text
@@ -365,7 +373,7 @@ function extraction()
 {
   user.getName();
   user.getUrl();
- // user.getSummary();
+  user.getSummary();
   user.getImage();
   user.getLocation();
   user.getCurrentCompany();
