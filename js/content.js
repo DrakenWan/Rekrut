@@ -97,7 +97,7 @@ var user = {
   {
     if(document.getElementsByClassName(templateIN.location)[0])
     {
-      this.location = document.getElementsByClassName(templateIN.location)[0].textContent;
+      this.location = document.getElementsByClassName(templateIN.location)[0].textContent.trim();
     } else { this.location = ""}
   },
   getImage: function()
