@@ -86,7 +86,7 @@ var user = {
   {
     if(document.getElementsByClassName(templateIN.name)[0])
     {
-      this.name = document.getElementsByClassName(templateIN.name)[0].innerHTML;
+      this.name = document.getElementsByClassName(templateIN.name)[0].innerHTML.trim();
     }else {this.name = ""}
   },
   getUrl: function()
