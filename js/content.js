@@ -406,13 +406,13 @@ function extraction()
     if(msg.todo == "send_data_to_server")
     {
       var hr = new XMLHttpRequest();
-      var url = "http://localhost:3000/";
+      var url = "http://localhost:3000/recruitUser";
       var data = JSON.stringify(user);
       hr.open("POST", url, true);
       hr.setRequestHeader("Content-type", "application/json");
       hr.send(data);
+      hr.abort();
     }
-
     sendResponse("successfull");
 });
 
