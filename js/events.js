@@ -2,6 +2,7 @@ var manifest = chrome.runtime.getManifest();
 var appName = manifest.name;
 var appVersion = manifest.version;
 
+
 //running on app reload
 chrome.runtime.onInstalled.addListener(function() {
     console.log(appName+appVersion+" is reloaded.");
@@ -27,3 +28,11 @@ chrome.pageAction.onClicked.addListener(function(){
         chrome.tabs.sendMessage(tabs[0].id,{todo: "toggle"});
     })
 });
+
+chrome.runtime.onMessage.addListener(function(req, sender, sendResponse)
+{
+    if(req.method == "getLS")
+        sendResponse({ls: localStorage['token']})
+    else
+        sendResponse({ls: undefined});
+})

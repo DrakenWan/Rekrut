@@ -1,5 +1,7 @@
 //attempting to make this all modular but failing miserably
 
+//constants
+const SERVER_URL = "http://localhost:3000/"
 /* *** Object Definition Starts *** */
 
 //response object template
@@ -300,21 +302,30 @@ var user = {
    }
 }// userProfile mirror object ends here
 
-
+var iframe = undefined;
 /* ##### IFRAME IMPLEMENTATION ######### */
-//calling our IframeFunction
-var iframe = SetupIframe();
+
+
+/*
+testing purposes
+var iframe = SetupIframe("./login.html");
 appendIframe(iframe);
+*/
 
 //below are the functionalities for setting up our iframe
-function SetupIframe()
+function SetupIframe(source)
 {
   var iframe = document.createElement('iframe');
-  createIframe(iframe, "./slider.html", "slidermenuiframe")
+  createIframe(iframe, source, "slidermenuiframe")
   styleIframe(iframe)
   return iframe
 }
 
+function removeIframe(id)
+{
+  var frame = document.getElementById(id);
+  frame.parentNode.removeChild(frame);
+}
 /* creation of iframe on the webpage */
 function createIframe(iframe, src, id)
 {
@@ -406,7 +417,7 @@ function extraction()
     if(msg.todo == "send_data_to_server")
     {
       var hr = new XMLHttpRequest();
-      var url = "http://localhost:3000/recruitUser";
+      var url = SERVER_URL + "recruitUser";
       var data = JSON.stringify(user);
       hr.open("POST", url, true);
       hr.setRequestHeader("Content-type", "application/json");
@@ -415,8 +426,6 @@ function extraction()
     }
     sendResponse("successfull");
 });
-
-
 // nothing to bother about : just for testing purposes : run along
 // just don't delete it
 resp.todo = "showPageAction";
@@ -436,7 +445,6 @@ function toggle()
 
 
 //server the server
-
 
 /* Residual code that might come handy in future
    is below:- 
@@ -485,3 +493,31 @@ function purifyString(string)
 कार्तिकेय कौल
 आकांक्षी डेटा वैज्ञानिक
 */
+
+/* login.js content handling below this part */
+
+chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse)
+{
+  if(msg.todo == "loggingin")
+  {
+    alert("Damn son! details sent!");
+    alert(msg.data);
+  }
+});
+
+function tokenChecker(token, callback)
+{
+  var xhr = new XMLHttpRequest();
+  var url = SERVER_URL + "tokenCheck";
+  xhr.open("POST", url, true);
+  xhr.send(token);
+  xhr.onreadystatechange = function()
+  {
+    if(xhr.readyState == 4 && xhr.status == 200)
+    {
+      return callback(xhr.responseText);
+    }//readyState checker
+  }
+}//tokenchecker message ends here
+
+/* login.js messages handling ends here */

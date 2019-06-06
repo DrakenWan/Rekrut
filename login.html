@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="./css/slider.css" type="text/css" rel="stylesheet" />
+        <link rel="stylesheet" href="./js/material/material.min.css">
+        <link rel="stylesheet" href="./js/material/material-design-iconic-font.min.css"/>
+        <link rel="stylesheet" href="./js/material/icon.css"/>
+        <script src="./js/material/material.min.js"></script>
+        <style>
+            #loginsect
+            {
+                height: 580px;
+                text-align: center;
+                vertical-align: middle;
+            }
+        </style>
+    </head>
+    <body>
+        <header id="myhead">
+            <!-- CLOSE EXTENSION BUTTON -->
+            <abbr title="Close the sidebar">
+                <div id="closebtn" class="closebtn button">
+                    <span id="closeicon">&times;</span>
+                </div>
+            </abbr>
+            <div id="title">
+            Rekrut
+            </div>
+        </header>
+
+        <section id="loginsect">
+                <form name="userdetails">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <label class="labels" for="uname">Username</label>
+                            <input class="mdl-textfield__input" type="text" id="uname" name="uname" placeholder="Enter Username"/>
+                            <label class="mdl-textfield__label" for="uname"></label>
+                        </div>
+
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <label class="labels" for="url">Password</label>
+                            <input class="mdl-textfield__input" type="password" id="pwd" name="pwd" placeholder="Enter Password"/>
+                            <label class="mdl-textfield__label" for="pwd"></label>
+                        </div>
+
+                        <input type="submit"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="login" name="login" value="Login"/>
+                </form>
+        </section>
+
+        <footer id="myfoot">
+            <span id="time">
+                &copy; 2019
+            </span>
+            <button type="button" id="author" class="mdl-chip">
+                <span class="mdl-chip__text">Author</span>
+            </button>
+        </footer>
+    </body>
+    <script src="./js/login.js"></script>
+</html>
