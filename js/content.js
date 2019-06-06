@@ -304,6 +304,29 @@ var user = {
 
 var iframe = undefined;
 /* ##### IFRAME IMPLEMENTATION ######### */
+var xhr = new XMLHttpRequest();
+//
+var url = SERVER_URL + "tokenCheck";
+xhr.open("POST", url, true);
+console.log(localStorage["token"]);
+xhr.send(localStorage["token"]);
+xhr.onreadystatechange = function()
+{
+  if(xhr.readyState == 4 && xhr.status == 200)
+  {
+    console.log(xhr.responseText)
+    if(xhr.responseText == "tokenexists")
+    {
+      iframe = SetupIframe("./slider.html");
+      appendIframe(iframe);
+    }
+    else
+    {
+      iframe = SetupIframe("./login.html");
+      appendIframe(iframe);
+    }
+  }
+}
 
 
 /*
@@ -326,6 +349,7 @@ function removeIframe(id)
   var frame = document.getElementById(id);
   frame.parentNode.removeChild(frame);
 }
+
 /* creation of iframe on the webpage */
 function createIframe(iframe, src, id)
 {
@@ -504,20 +528,5 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse)
     alert(msg.data);
   }
 });
-
-function tokenChecker(token, callback)
-{
-  var xhr = new XMLHttpRequest();
-  var url = SERVER_URL + "tokenCheck";
-  xhr.open("POST", url, true);
-  xhr.send(token);
-  xhr.onreadystatechange = function()
-  {
-    if(xhr.readyState == 4 && xhr.status == 200)
-    {
-      return callback(xhr.responseText);
-    }//readyState checker
-  }
-}//tokenchecker message ends here
 
 /* login.js messages handling ends here */
