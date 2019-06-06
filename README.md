@@ -36,9 +36,17 @@ I have tried a brave attempt at making UI satisfactory but I am a bit flambuoyan
 
 ## RekrutServer testing the submit code
 <p>
-The code has been changed a bit. When the user clicks on submit. The details will be sent to the node server with an XMLHttpRequest and the node server will process the object received and save it to the mongodb collection. </p>
+The code has been changed a bit. When the user clicks on submit. The details will be sent to the node server with an XMLHttpRequest and the node server will process the object received and save it to the mongodb collection of given database. </p>
 <p>
 You can find the <a href="./testing/RekrutServer/rekrut.js">server</a> file in the RekrutServer folder that is itself within testing folder. The file can be directly run into your cmd system. Just ensure you have node.js installed in your system and node executable is within the path. then type <code>node rekrut.js</code> within the same directory. Also ensure you have a mongodb server running in your system for the mongodb driver to connect with it. The data won't be served otherwise.</p>
+### Instructions to use
+
+Go to the <a href="./testing/RekrutServer/rekrut.js">server</a> file. Change the constants <code>DBNAME</code>, <code>COLLECTION</code> and <code>MONGODB_SERVER</code> according to your needs in the file.
+Open the directory containing this file in cmd. Ensure you have node.js in your PATH.
+Run: <code> node rekrut.js </code>
+This will open a server at <code> localhost:3000 </code>. You can change the port from 3000 to any other by changing the <code>PORT</code> constant.
+Now that your server is running quietly in cmd. Go to a linkedin profile and click on submit. The details would vanish from the text fields after submit. Fret not! Just scroll through the browser and the details would extract back to the text fields. The details will be sent to the database. You can verify that on your MongoDB GUI or MongoDB shell.
+
 <p>
 I am working on adding user login functionality to generate a user session and send requests to server. That will not be passed into the project.
 </p>
