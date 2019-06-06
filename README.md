@@ -39,6 +39,7 @@ I have tried a brave attempt at making UI satisfactory but I am a bit flambuoyan
 The code has been changed a bit. When the user clicks on submit. The details will be sent to the node server with an XMLHttpRequest and the node server will process the object received and save it to the mongodb collection of given database. </p>
 <p>
 You can find the <a href="./testing/RekrutServer/rekrut.js">server</a> file in the RekrutServer folder that is itself within testing folder. The file can be directly run into your cmd system. Just ensure you have node.js installed in your system and node executable is within the path. then type <code>node rekrut.js</code> within the same directory. Also ensure you have a mongodb server running in your system for the mongodb driver to connect with it. The data won't be served otherwise.</p>
+
 ### Instructions to use
 
 Go to the <a href="./testing/RekrutServer/rekrut.js">server</a> file. Change the constants <code>DBNAME</code>, <code>COLLECTION</code> and <code>MONGODB_SERVER</code> according to your needs in the file.
