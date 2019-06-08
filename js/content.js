@@ -13,17 +13,17 @@ var resp =
 
 // Template for linkedin Profile
 var templateIN = {
-  name: "pv-top-card-section__name",
+  name: "pv-top-card-v3--list",
   url: "",
-  location: "pv-top-card-section__location",
+  location: "pv-top-card-v3--list",
   image: "pv-top-card-section__photo",
-  summary: "pv-top-card-section__summary-text", // reducing data overhead
+  summary: "pv-about-section", // reducing data overhead
   company: {
-    name: "pv-top-card-v2-section__company-name",
+    name: "pv-top-card-v3--experience-list-item",
   },
   current_education:
   {
-    name: "pv-top-card-v2-section__school-name",
+    name: "pv-top-card-v3--experience-list-item",
   },
   contact:
   {
@@ -88,7 +88,9 @@ var user = {
   {
     if(document.getElementsByClassName(templateIN.name)[0])
     {
-      this.name = document.getElementsByClassName(templateIN.name)[0].innerHTML.trim();
+      var temp = document.getElementsByClassName(templateIN.name)[0];
+      temp = temp.firstElementChild;
+      this.name = temp.textContent.trim();
     }else {this.name = ""}
   },
   getUrl: function()
@@ -97,9 +99,11 @@ var user = {
   },
   getLocation: function()
   {
-    if(document.getElementsByClassName(templateIN.location)[0])
+    if(document.getElementsByClassName(templateIN.location)[1])
     {
-      this.location = document.getElementsByClassName(templateIN.location)[0].textContent.trim();
+      var temp = document.getElementsByClassName(templateIN.location)[1];
+      temp = temp.firstElementChild;
+      this.location = temp.textContent.trim();
     } else { this.location = ""}
   },
   getImage: function()
@@ -113,21 +117,27 @@ var user = {
   {
     if(document.getElementsByClassName(templateIN.company.name)[0]) //current company if it exists
     {
-      user.company.name = document.getElementsByClassName(templateIN.company.name)[0].textContent;
+      var temp = document.getElementsByClassName(templateIN.company.name)[0];
+      temp = temp.lastElementChild;
+      user.company.name = temp.textContent.trim();
     } else {user.company.name = ""}
   },
   getLatestEducation: function()
   {
-    if(document.getElementsByClassName(templateIN.current_education.name)[0]) //current or headlined educational institute if it exists
+    if(document.getElementsByClassName(templateIN.current_education.name)[1]) //current or headlined educational institute if it exists
     {
-    user.current_education.name = document.getElementsByClassName(templateIN.current_education.name)[0].textContent;
+      var temp = document.getElementsByClassName(templateIN.current_education.name)[1];
+      temp = temp.lastElementChild;
+      user.current_education.name = temp.textContent.trim();
     } else { user.current_education.name = ""}
   },
   getSummary: function()
   {
     if(document.getElementsByClassName(templateIN.summary)[0])
     {
-      user.summary = purifyString(document.getElementsByClassName(templateIN.summary)[0].textContent);
+      var temp = document.getElementsByClassName(templateIN.summary)[0];
+      temp = temp.lastElementChild;
+      user.summary = purifyString(temp.textContent);
     } else {user.summary = ""}
   },
   getEmail: function()
@@ -504,12 +514,11 @@ function purifyString(string)
   string = string.replace("See More", "");
   string = string.replace("see more", "");
   string = string.replace("See more", "");
-  string = string.replace("  ", " ");
-  string = string.replace("   ", " ");
-  string = string.replace("    ", " ");
-  string = string.replace("     ", " ");
-  string = string.replace("      ", " ");
+  string = string.replace(/\s+/g, " ");
+  string = string.replace(/\r?\n|\r/, "");
   string = string.trim();
+  string = string.replace("About", "");
+  string = string.replace("about", "");
   return string;
 }
 
