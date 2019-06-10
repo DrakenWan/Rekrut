@@ -5,16 +5,7 @@ var user = {
     location: "",
     image: undefined,
     summary: "",
-    company: {
-      name: "",
-      designation: "",
-      duration: undefined
-    },
-    current_education:
-    {
-        name: "",
-        duration: ""
-    },
+    experience_list: ["", ""],
     contact:
     {
         email: ""
@@ -58,8 +49,8 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse)
         //summary.value = user.summary.trim(); //reducing data overhead
         proPic.src = user.image;
         loc.value = user.location.trim();
-        comp.value = user.company.name.trim();
-        edu.value = user.current_education.name.trim();
+        comp.value = user.experience_list[1].trim();
+        edu.value = user.experience_list[0].trim();
         email.value = user.contact.email.trim();
         experience.value = JSON.stringify(user.experience);
         email.value = user.contact.email.trim();
@@ -74,22 +65,10 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse)
 chrome.tabs.query({active: true, currentWindow: true}, function(tab)
 {
     console.log("Extraction Command Sent.");
-        chrome.tabs.onUpdated.addListener(function()
-        {
-            chrome.tabs.sendMessage(tab[0].id, {todo: "auto_extraction_notbutton"});
-        });
-});
-
-// form submisson code simple testing
-document.getElementById("submitDetails").addEventListener("click", function()
-{
-    chrome.tabs.query({active: true, currentWindow: true}, function(tab)
-    {
-        chrome.tabs.sendMessage(tab[0].id, {todo:"send_data_to_server"},function()
-        {
-            console.log("Sending data to content-script");
-        });
-    });
+    //chrome.tabs.onUpdated.addListener(function()
+    //{
+        chrome.tabs.sendMessage(tab[0].id, {todo: "auto_extraction_notbutton"});
+    //});
 });
 
 // the code is itself descriptive

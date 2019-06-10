@@ -18,13 +18,8 @@ var templateIN = {
   location: "pv-top-card-v3--list",
   image: "pv-top-card-section__photo",
   summary: "pv-about-section", // reducing data overhead
-  company: {
-    name: "pv-top-card-v3--experience-list-item",
-  },
-  current_education:
-  {
-    name: "pv-top-card-v3--experience-list-item",
-  },
+  company: "pv-top-card-v3--experience-list-item",
+  experience_list: [],
   contact:
   {
     email: "pv-contact-info__header"
@@ -66,13 +61,7 @@ var user = {
   location: "",
   summary: "",
   image: undefined,
-  company: {
-    name: ""
-  },
-  current_education:
-  {
-    name: ""
-  },
+  experience_list: ["", ""],
   contact:
   {
     email: ""
@@ -113,23 +102,29 @@ var user = {
       user.image = document.getElementsByClassName(templateIN.image)[0].src;
     } else { user.image = "https://www.pinclipart.com/picdir/middle/8-82428_profile-clipart-generic-user-gender-neutral-head-icon.png";}
   },
-  getCurrentCompany: function()
+  getLatestExperienceList: function()
   {
-    if(document.getElementsByClassName(templateIN.company.name)[0]) //current company if it exists
+    user.experience_list = ["",""];
+    if(document.getElementsByClassName(templateIN.company)) //current company if it exists
     {
-      var temp = document.getElementsByClassName(templateIN.company.name)[0];
-      temp = temp.lastElementChild;
-      user.company.name = temp.textContent.trim();
-    } else {user.company.name = ""}
-  },
-  getLatestEducation: function()
-  {
-    if(document.getElementsByClassName(templateIN.current_education.name)[1]) //current or headlined educational institute if it exists
-    {
-      var temp = document.getElementsByClassName(templateIN.current_education.name)[1];
-      temp = temp.lastElementChild;
-      user.current_education.name = temp.textContent.trim();
-    } else { user.current_education.name = ""}
+      var temp = document.getElementsByClassName(templateIN.company);
+      for(var i=0; i<temp.length; i++)
+      {
+        if(temp[i].getAttribute("data-control-name") == "education_see_more")
+          {
+            temp[i] = temp[i].lastElementChild;
+            user.experience_list[0] = temp[i].textContent.trim();
+            //console.log(user.experience_list[0]);
+          }
+          
+        if(temp[i].getAttribute("data-control-name") == "position_see_more")
+        {
+          temp[i] = temp[i].lastElementChild;
+          user.experience_list[1] = temp[i].textContent.trim();
+          //console.log(user.experience_list[1]);
+        }
+      }
+    }
   },
   getSummary: function()
   {
@@ -233,7 +228,9 @@ var user = {
             if(companyName) job.company = companyName.textContent.trim(); else job.company = "";
             if(doe) job.doe.push(doe.firstElementChild.lastElementChild.textContent.trim()); else job.doe.push("");
             if(duration) job.duration.push(duration.lastElementChild.lastElementChild.textContent.trim()); else job.duration.push("");
-            if(location.nextElementSibling) job.location.push(location.lastElementChild.textContent.trim()); else job.location.push("");
+            if(location){
+               if(location.nextElementSibling) job.location.push(location.nextElementSibling.lastElementChild.textContent.trim());
+             } else job.location.push("");
             this.experience.push(job);
           }
         }// if condition to check if temp is #text
@@ -318,13 +315,20 @@ var xhr = new XMLHttpRequest();
 //
 var url = SERVER_URL + "tokenCheck";
 xhr.open("POST", url, true);
-console.log(localStorage["token"]);
-xhr.send(localStorage["token"]);
+//console.log(localStorage["token"]);
+if(localStorage["token"])
+  xhr.send(localStorage["token"]);
+else
+{
+  console.log("Token does not exist in browser.");
+  iframe = SetupIframe("./login.html");
+  appendIframe(iframe);
+}
 xhr.onreadystatechange = function()
 {
-  if(xhr.readyState == 4 && xhr.status == 200)
+  if(xhr.status == 200)
   {
-    console.log(xhr.responseText)
+    console.log("Client token exists in database.");
     if(xhr.responseText == "tokenexists")
     {
       iframe = SetupIframe("./slider.html");
@@ -332,6 +336,7 @@ xhr.onreadystatechange = function()
     }
     else
     {
+      console.log("Client token does not exist in database.");
       iframe = SetupIframe("./login.html");
       appendIframe(iframe);
     }
@@ -421,8 +426,8 @@ function extraction()
   user.getSummary();
   user.getImage();
   user.getLocation();
-  user.getCurrentCompany();
-  user.getLatestEducation();
+  user.getLatestExperienceList();
+  //user.getLatestEducation();
   user.getEmail();
   user.getExperience();
   user.getEducation();
@@ -533,8 +538,37 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse)
 {
   if(msg.todo == "loggingin")
   {
-    alert("Damn son! details sent!");
-    alert(msg.data);
+    console.log("Sending login details to server.");
+    var logReq = new XMLHttpRequest();
+    var URL = SERVER_URL + "authenticateRekruter";
+    var data = JSON.stringify(msg.data);
+    logReq.open("POST", URL, true);
+    logReq.setRequestHeader("Content-type", "application/json");
+    logReq.send(data);
+    logReq.onreadystatechange = function()
+    {
+      if(logReq.status == 200 && logReq.readyState == 4)
+      {
+        //console.log("Things change!"); //debug statement
+        var logReqData = logReq.responseText;
+        if(logReqData == "-1")
+        {
+          console.log("Username does not exist.");
+          alert("The username entered does not exist. Try again!");
+        }
+        else if(logReqData == "0")
+        {
+          console.log("Incorrect password!");
+          alert("The password entered is incorrect. Talk to your admin if you have forgotten password.");
+        }
+        else
+        {
+          console.log("Token has been received!");
+          localStorage["token"] = logReqData;
+          location.reload(true);
+        }
+      }
+    }
   }
 });
 
