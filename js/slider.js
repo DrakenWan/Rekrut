@@ -65,10 +65,13 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse)
 chrome.tabs.query({active: true, currentWindow: true}, function(tab)
 {
     console.log("Extraction Command Sent.");
-    //chrome.tabs.onUpdated.addListener(function()
-    //{
+    //the redundancy of lines below is due to onUpdated even only firing when links are clicked or DOM content is updated
+    //So I added the same code right above the listenere.
+    chrome.tabs.sendMessage(tab[0].id, {todo: "auto_extraction_notbutton"});
+    chrome.tabs.onUpdated.addListener(function()
+    {
         chrome.tabs.sendMessage(tab[0].id, {todo: "auto_extraction_notbutton"});
-    //});
+    });
 });
 
 // the code is itself descriptive

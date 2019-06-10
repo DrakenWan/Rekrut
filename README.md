@@ -16,7 +16,7 @@ To install all the internal dependencies run:
 <code>npm install</code> (Keep pressing enter until it reaches the end of the description of the installation)  
 After the package has installed itself in the [test](./testing/test) folder, type:  
 <code>node test.js</code>  
->If there are some errors while running node.js please inform me promptly. They are most likely dependency error. If possible, you can see the name of missing module and type **<code>npm install {modulename}</code>**
+>If there are some errors while running node.js please inform me promptly. They are most likely dependency error. If possible, you can see the name of missing module and type **<code>npm install _modulename_</code>**
 
 ## 3.0
 Rekrut3.0 has new features added to it. Now it has a login feature and if the rekruter's (recruiter's) name is within the database then they
