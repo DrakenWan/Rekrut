@@ -6,7 +6,9 @@
     "background":{
         "scripts": ["./js/events.js"]
     },
-    
+    "icons": {
+       "128": "./images/icon128.png" 
+    },
     "page_action":
     {
         "default_title": "Linkedin scraper for recruiters"
