@@ -133,3 +133,27 @@ visibility: visible;
 {
     background-color:#4875B4;
 }
+
+#loader-section
+{
+    /* border: 2px solid; red; */ /*for testing only */
+    height: 400px;
+    vertical-align: middle;
+}
+
+#loader
+{
+    border: 16px solid #b8b8b8;
+    border-radius: 50%;
+    border-top: 16px solid #4875B4;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    margin-top: 50%;
+    margin-left: 30%;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

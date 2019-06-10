@@ -361,8 +361,9 @@ function SetupIframe(source)
 
 function removeIframe(id)
 {
-  var frame = document.getElementById(id);
-  frame.parentNode.removeChild(frame);
+  var newframe = SetupIframe("./slider.html");
+  document.getElementById(id).replaceWith(newframe);
+  toggle();
 }
 
 /* creation of iframe on the webpage */
@@ -565,7 +566,9 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse)
         {
           console.log("Token has been received!");
           localStorage["token"] = logReqData;
-          location.reload(true);
+          iframe = SetupIframe("./slider.html");
+          removeIframe("slidermenuiframe");
+          appendIframe(iframe);
         }
       }
     }

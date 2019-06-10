@@ -47,3 +47,10 @@ document.getElementById("login").addEventListener("click", function()
         alert("The fields are empty. Fill them before pressing login.");
     }
 });
+
+setTimeout(function()
+{
+ document.getElementById("loader-section").style = "display: none;";
+ if(document.getElementById("loginsect"))
+    document.getElementById("loginsect").style = "display: block;";
+}, 3000);

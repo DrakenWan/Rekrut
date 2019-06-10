@@ -14,12 +14,28 @@ var sendTodb = function(dbName, collectionName, object, credentials=undefined)
 	{
 		if(err) throw err;
 		var dbo = db.db(dbName);
-		dbo.collection(collectionName).insertOne(object, function(err)
+		var query = {url: object.url};
+		dbo.collection(collectionName).find(query).toArray(function(err, result)
+        {
+         if(err) throw err;
+         if(result.length <= 0)
+         {
+			dbo.collection(collectionName).insertOne(object, function(err)
+			{
+				if(err) throw err;
+				console.log("Document for " + collectionName + " successfully added.");
+				db.close();
+			});
+		}
+		else
 		{
-			if(err) throw err;
-			console.log("Document for " + collectionName + " successfully added.");
-			db.close();
-		});
+			dbo.collection(collectionName).updateOne(query, {$set: object}, function(err, res)
+			{
+				if(err) throw err;
+				console.log("Document for " + collectionName + " successfully updated.");
+			});
+		}
+	   });
 	});
 }
 
