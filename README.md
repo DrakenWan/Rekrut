@@ -20,7 +20,7 @@ You need to ensure that you have the following dependencies installed within you
 3. Now that your server is running, ensure that your mongodb server is running in the background. It must be running by default (it runs on startup of PC).  
 4. Open chrome browser. Type <code>chrome://extensions</code>. Turn on `developer mode`. Click on the button `Load unpacked extension`. Browse the Rekrut-master folder and select it. The extension is installed within your system.
 
-> The extension will only work on [linkedin.com](https://www.linkedin.com) and only extract viable information from [linkedin.com/in/{profileurl}](https://www.linkedin.com/in/feed) pages. You will also need to login first.  
+> The extension will only work on [linkedin.com](https://www.linkedin.com) and only extract viable information from [linkedin.com/in/{profileurl}](https://www.linkedin.com/feed) pages. You will also need to login first.  
 
 ### Registering your own details of authentication
 You can register yourself using the <code>signup_user.js</code> file. This will check if the username already exists in the database or not. If it doesn't then you can successfully login. Say you want to signup with username "drakenwan" and password "ilikecupcakes". Then type:  
