@@ -228,9 +228,13 @@ var user = {
             if(companyName) job.company = companyName.textContent.trim(); else job.company = "";
             if(doe) job.doe.push(doe.firstElementChild.lastElementChild.textContent.trim()); else job.doe.push("");
             if(duration) job.duration.push(duration.lastElementChild.lastElementChild.textContent.trim()); else job.duration.push("");
+<<<<<<< HEAD
             if(location){
                if(location.nextElementSibling) job.location.push(location.nextElementSibling.lastElementChild.textContent.trim());
              } else job.location.push("");
+=======
+            if(location.nextElementSibling) job.location.push(location.nextElementSibling.lastElementChild.textContent.trim()); else job.location.push("");
+>>>>>>> 4bab60a862bbf68fae002adb5c335d1a99464da0
             this.experience.push(job);
           }
         }// if condition to check if temp is #text
