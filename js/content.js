@@ -354,16 +354,18 @@ appendIframe(iframe);
 function SetupIframe(source)
 {
   var iframe = document.createElement('iframe');
-  createIframe(iframe, source, "slidermenuiframe")
+  iframe = createIframe(iframe, source, "slidermenuiframe")
   styleIframe(iframe)
   return iframe
 }
 
-function removeIframe(id)
+function removeIframe(id, src)
 {
-  var newframe = SetupIframe("./slider.html");
+  var newframe = SetupIframe(src);
   document.getElementById(id).replaceWith(newframe);
+  var frame = document.getElementById(id);
   toggle();
+  return frame;
 }
 
 /* creation of iframe on the webpage */
@@ -566,9 +568,9 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse)
         {
           console.log("Token has been received!");
           localStorage["token"] = logReqData;
-          iframe = SetupIframe("./slider.html");
-          removeIframe("slidermenuiframe");
-          appendIframe(iframe);
+          
+          iframe = removeIframe("slidermenuiframe", "./slider.html");
+          appendIframe(iframe); toggle();
         }
       }
     }
@@ -580,10 +582,10 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse)
   if(msg.todo == "logout_extension")
   {
     console.log("Logging out from extension.");
-    iframe = SetupIframe("./login.html");
-    removeIframe("slidermenuiframe");
-    appendIframe(iframe);
-
+    iframe = removeIframe("slidermenuiframe", "./login.html");
+    //iframe = SetupIframe("./login.html");
+    appendIframe(iframe); toggle();
+    
     console.log("Deleting the token.");
     delete localStorage["token"];
     sendResponse("Token deleted. Logged out successfully.");
