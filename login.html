@@ -9,12 +9,7 @@
         <link rel="stylesheet" href="./js/material/icon.css"/>
         <script src="./js/material/material.min.js"></script>
         <style>
-            #loginsect
-            {
-                height: 580px;
-                text-align: center;
-                vertical-align: middle;
-            }
+            
         </style>
     </head>
     <body>
@@ -33,7 +28,8 @@
             <div id="loader"></div>
         </section>
         <section id="loginsect" style="display:none;">
-                <form name="userdetails">
+                <form name="userdetails" id="userdetails">
+                        <div id="error-msg" style="display: none;">Please fill in the empty fields</div>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                             <label class="labels" for="uname">Username</label>
                             <input class="mdl-textfield__input" type="text" id="uname" name="uname" placeholder="Enter Username"/>
@@ -47,6 +43,7 @@
                         </div>
 
                         <input type="submit"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="login" name="login" value="Login"/>
+                        
                 </form>
         </section>
 
