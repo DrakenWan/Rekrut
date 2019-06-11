@@ -175,3 +175,31 @@ visibility: visible;
 {
     margin-bottom: 100px;
 }
+
+#logout-button
+{
+    position: absolute;
+    top: 0;
+    right: 5px;
+    z-index: 3;
+}
+
+#logout-icon
+{
+    height: 0.6em;
+    width: 0.6em;
+    cursor: pointer;
+    filter: invert(94%) /*sepia(100%) saturate(0%) hue-rotate(149deg) brightness(102%) contrast(102%)*/;
+    box-shadow: 0 0 30px #B78A4B;
+    border-radius: 35px;
+    transform: rotate(0deg);
+    transition: 0.5s;
+}
+
+#logout-icon:hover
+{
+    height: 0.7em;
+    width: 0.7em;
+    transform: rotate(360deg);
+    transition: 0.5s; 
+}

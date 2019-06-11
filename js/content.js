@@ -575,4 +575,18 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse)
   }
 });
 
+chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse)
+{
+  if(msg.todo == "logout_extension")
+  {
+    console.log("Logging out from extension.");
+    iframe = SetupIframe("./login.html");
+    removeIframe("slidermenuiframe");
+    appendIframe(iframe);
+
+    console.log("Deleting the token.");
+    delete localStorage["token"];
+    sendResponse("Token deleted. Logged out successfully.");
+  }
+});
 /* login.js messages handling ends here */

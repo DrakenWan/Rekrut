@@ -111,3 +111,11 @@ setTimeout(function()
     if(document.getElementById("extractdatapage"))
         document.getElementById("extractdatapage").style = "display:block;";
 }, 100)
+
+document.getElementById("logout-button").addEventListener("click", function()
+{
+    chrome.tabs.query({active: true, currentWindow: true}, function(tab)
+    {
+        chrome.tabs.sendMessage(tab[0].id, {todo: "logout_extension", data: user});
+    });
+});
