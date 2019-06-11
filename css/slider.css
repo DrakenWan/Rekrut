@@ -178,8 +178,8 @@ visibility: visible;
 
 #logout-button
 {
-    position: absolute;
-    top: 0;
+    position: fixed;
+    bottom: 5px;
     right: 5px;
     z-index: 3;
 }
