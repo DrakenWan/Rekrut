@@ -57,7 +57,7 @@ section:after {
 }
 
 /* Style the footer */
-footer {
+#myfoot {
     background-color: #777;
     padding: 10px 10px 10px 10px;
     text-align: center;
