@@ -59,14 +59,21 @@ section:after {
 /* Style the footer */
 footer {
     background-color: #777;
-    padding: 10px;
+    padding: 10px 10px 10px 10px;
     text-align: center;
     color: white;
+    position:fixed;
+    width: 100%;
+    clear: both;
+    bottom:0;
+    left:0;
+    right:0;
 }
 
 #myhead, #myfoot
 {
     box-shadow: 0 0 10px slategray;
+    z-index: 2;
 }
 
 #author
@@ -156,4 +163,15 @@ visibility: visible;
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+#loginsect
+{
+    text-align: center;
+    vertical-align: middle;
+}
+
+#extractdatapage
+{
+    margin-bottom: 100px;
 }
