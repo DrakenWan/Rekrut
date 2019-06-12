@@ -28,6 +28,7 @@ You can register yourself using the <code>signup_user.js</code> file. This will 
 There should not be any spaces in username or password. Your details will store in database but your unique `token` won't be generated.  
 Go back to chrome. Login with your registered details. The browser will check if you have the unique `token` if not then it will authenticate ur details if they are authenticated then your unique token will be stored in browser and you will stay logged in until you erase browser memory or cookies.
 
+> The extension will only authenticate your login details if the server file <code> test.js </code> is running in the background. If you have your own server then I suggest you change certain parameters within <code> testing </code> folder files as well as <code> extension folder </code>. You can find the constant variable like <code> SERVER_URL </code> or just <code> SERVER </code> in the files and change the link to your own server's. Transfer the express code from the testing folder files or create your own to serve the middleware of your serve if you are using a different framework.
 
 ## 3.1
 Rekrut3.1 has new features added to it. Now it has a login feature and if the rekruter's (recruiter's) name is within the database only then they
