@@ -16,9 +16,10 @@ abbr{
 {
     height: 90px;
     width: 90px;
-    border-radius: 50px;
+    border-radius: 50%;
     border: 5px solid white;
     pointer-events: visible;
+    cursor: not-allowed;
 }
 
 .mdl-textfield__input:-webkit-autofill + .mdl-textfield__label {

@@ -37,7 +37,10 @@ document.getElementById("userdetails").addEventListener("submit", function(event
 
         chrome.tabs.query({active: true, currentWindow: true}, function(tab)
         {
-            chrome.tabs.sendMessage(tab[0].id, {todo: "loggingin", data: rekrut});
+            chrome.tabs.sendMessage(tab[0].id, {todo: "loggingin", data: rekrut}, function(msg)
+            {
+                console.log(msg);
+            });
         });
     }
     else

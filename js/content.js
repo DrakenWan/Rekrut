@@ -545,6 +545,10 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse)
     var logReq = new XMLHttpRequest();
     var URL = SERVER_URL + "authenticateRekruter";
     var data = JSON.stringify(msg.data);
+    logReq.onerror = function(e){
+      alert("The server probably did not respond. Try connecting to server again.")
+      sendResponse("Error: The server probably did not respond.");
+    };
     logReq.open("POST", URL, true);
     logReq.setRequestHeader("Content-type", "application/json");
     logReq.send(data);
