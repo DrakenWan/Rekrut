@@ -86,7 +86,10 @@ document.getElementById("submitDetails").addEventListener("click", function()
 {
     chrome.tabs.query({active: true, currentWindow: true}, function(tab)
     {
-        chrome.tabs.sendMessage(tab[0].id, {todo: "send_data_to_server", data: user});
+        chrome.tabs.sendMessage(tab[0].id, {todo: "send_data_to_server", data: user}, function(resp)
+        {
+            alert("Details sent!");
+        });
     });
 });
 

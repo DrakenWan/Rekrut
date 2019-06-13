@@ -466,9 +466,15 @@ function extraction()
       hr.open("POST", url, true);
       hr.setRequestHeader("Content-type", "application/json");
       hr.send(data);
+      hr.onreadystatechange = function () {
+        if(hr.readyState == 4)
+        {
+          sendResponse("successful");
+        }
+      }
       hr.abort();
     }
-    sendResponse("successfull");
+    
 });
 // nothing to bother about : just for testing purposes : run along
 // just don't delete it
