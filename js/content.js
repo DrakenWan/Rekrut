@@ -132,7 +132,9 @@ var user = {
     {
       var temp = document.getElementsByClassName(templateIN.summary)[0];
       temp = temp.firstElementChild.nextElementSibling;
-      user.summary = purifyString(temp.textContent);
+      if(temp)
+        user.summary = purifyString(temp.textContent);
+      else user.summary = "";
     } else {user.summary = ""}
   },
   getEmail: function()
