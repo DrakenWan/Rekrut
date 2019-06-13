@@ -15,7 +15,10 @@ document.getElementById("closebtn").addEventListener("click", function()
 {
     //closing the slider request sent
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
-        chrome.tabs.sendMessage(tabs[0].id,{todo: "toggle"});
+        chrome.tabs.sendMessage(tabs[0].id,{todo: "toggle"}, function(resp)
+        {
+            console.log(resp);
+        });
     })
 });
 

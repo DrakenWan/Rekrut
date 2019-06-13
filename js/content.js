@@ -326,6 +326,30 @@ else
   iframe = SetupIframe("./login.html");
   appendIframe(iframe);
 }
+xhr.onerror = function()
+{
+  iframe = SetupIframe("./login.html");
+  appendIframe(iframe);
+        var i = document.createElement("div");
+        document.body.appendChild(i);
+        i.style.transition = "0.5s";
+        i.style.background = "#666";
+        i.style.color = "#fff";
+        i.style.height = "auto";
+        i.style.width = "200px";
+        i.style.position = "fixed";
+        i.style.top = "0px";
+        i.style.left = "0px";
+        i.style.margin ="20px 50%";
+        i.style.padding = "20px";
+        i.style.zIndex = "9000000000000000000";
+        i.style.fontStyle = "bold";
+        i.style.fontSize = "16px";
+        i.innerText = "Rekrut - Error: Server not responding. Loaded login page.";
+        setTimeout(function() {
+            i.style = "display: none; transition: 0.5s;";
+        }, 10000);
+}
 xhr.onreadystatechange = function()
 {
   if(xhr.status == 200)
@@ -341,6 +365,7 @@ xhr.onreadystatechange = function()
       console.log("Client token does not exist in database.");
       iframe = SetupIframe("./login.html");
       appendIframe(iframe);
+      
     }
   }
 }
