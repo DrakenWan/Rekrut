@@ -6,6 +6,8 @@ Current version is 3.0
 
 ## Installation or Setting Up
 
+**_Before you do anything, please take out the testing folder out of the root folder into some safe space. This is where your server code is. It contains sensitive files such as certificate key, models, etc._**
+
 You need to ensure that you have the following dependencies installed within your system:
 * [node.js](https://nodejs.org/en/download/) : Ensure this is in path.  
 * [mongodb](https://www.mongodb.com/download-center) : Ensure the mongodb is properly installed and it is accessible through shell.  

@@ -499,7 +499,7 @@ function extraction()
       hr.onreadystatechange = function () {
         if(hr.readyState == 4 && hr.status == 200)
         {
-          alert("");
+          //alert("");
           alert("Details successfully sent.");
         }
       }
