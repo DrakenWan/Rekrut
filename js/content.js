@@ -1,7 +1,8 @@
 //attempting to make this all modular but failing miserably
 
 //constants
-const SERVER_URL = "http://localhost:3000/"
+const HOST = 'localhost'
+const SERVER_URL = "https://"+HOST+":3000/"
 /* *** Object Definition Starts *** */
 
 //response object template
