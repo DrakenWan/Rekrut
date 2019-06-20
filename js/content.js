@@ -1,8 +1,7 @@
-//attempting to make this all modular but failing miserably
-
 //constants
 const HOST = 'localhost'
 const SERVER_URL = "https://"+HOST+":3000/"
+
 /* *** Object Definition Starts *** */
 
 //response object template
@@ -52,10 +51,8 @@ class School {
   }
 }
 
-
-//methods to initialise the 
 // Temporary pass object : mirrors the templateIN variable
-// this object has functionalities to retrieve its data
+// this object has methods to retrieve its data
 var user = {
   name: "",
   url: "",
@@ -312,11 +309,12 @@ var user = {
    }
 }// userProfile mirror object ends here
 
+
 var iframe = undefined;
 /* ##### IFRAME IMPLEMENTATION ######### */
 var xhr = new XMLHttpRequest();
-//
 var url = SERVER_URL + "tokenCheck";
+
 xhr.open("POST", url, true);
 //console.log(localStorage["token"]);
 if(localStorage["token"])
@@ -407,15 +405,6 @@ function createIframe(iframe, src, id)
 //iframe styling function
 function styleIframe(iframe)
 {
-  /*
-    can be modified by actually passing the iframe_template object as an argument
-    as well so as to pass on values into the styles.
-    
-    Or
-
-    we can also use iframe.style.cssText but it is not stable for animations
-  */
-
   // adding css style below with animation
   iframe.style.background = "#f7f7f7";
   iframe.style.height = "100%";
@@ -448,7 +437,6 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse)
   }
 });
 
-
 // extraction method
 function extraction()
 {
@@ -470,11 +458,6 @@ function extraction()
     console.log("Auto extraction message sent."+msg);
   });
 }
-  /*
-  chrome.runtime.sendMessage(resp, function()
-    {
-      console.info("Auto extraction message sent!");
-    });*/
 
 //request accepted from events.js page to toggle the slider
   chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse)
@@ -503,9 +486,9 @@ function extraction()
           alert("Details successfully sent.");
         }
       }
-    }
-    
+    } 
 });
+
 // nothing to bother about : just for testing purposes : run along
 // just don't delete it
 resp.todo = "showPageAction";
@@ -522,9 +505,6 @@ function toggle()
         iframe.style.width = "0px";
     }
 }
-
-
-//server the server
 
 /* Residual code that might come handy in future
    is below:- 
