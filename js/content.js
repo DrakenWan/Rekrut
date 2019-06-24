@@ -23,7 +23,8 @@ var templateIN = {
   contact:
   {
     email: "pv-contact-info__header"
-  }
+  },
+  skills: []
 //  resume: "pv-top-card-section__summary-treasury" // working on it
 }
 
@@ -51,6 +52,14 @@ class School {
   }
 }
 
+//skill object : not sure if we will make use of this object class at all
+class skills {
+  constructor(){
+    this.topskills = [];
+    this.skills = [];
+  }
+}
+
 // Temporary pass object : mirrors the templateIN variable
 // this object has methods to retrieve its data
 var user = {
@@ -66,6 +75,7 @@ var user = {
   },
   experience: [],
   education: [],
+  skills: [],
   init()
   {
 
@@ -306,7 +316,68 @@ var user = {
         } //if the node is "li" or not
        }//for loop for iterating through the list of institutes
      }// if condn for education-section's existence
-   }
+   },
+   getSkill: function() {
+      user.skills = []; //flush them stoopid skills
+      if(document.getElementsByClassName("pv-skill-categories-section")) {
+        // establish our iterator
+        var itr = document.getElementsByClassName("pv-skill-categories-section")[0]; 
+
+        if(itr)
+        {
+            itr = itr.firstElementChild;
+            //extraction of top skills
+            if(itr.nextElementSibling) //check if "ol" exists or not
+            {
+              
+              var _itr = itr.nextElementSibling; //establish inner iterator
+              if(_itr.className.split(" ")[0] === "mt3")
+               _itr = itr.nextElementSibling.nextElementSibling;
+              var nodes = _itr.childNodes; // get the node elements
+              for(var i=2; i<nodes.length; i+=3)
+              {
+                _itr = nodes[i].firstElementChild.firstElementChild;
+                if(_itr.className === "relative" || _itr.className === "mr3" || _itr.className === "relative mr3") //check if div.relative || div.mr3 exists or not and adjust accordingly
+                  _itr = _itr.nextElementSibling;
+                
+                _itr = _itr.firstElementChild; // traversal path : div --> p
+                
+                // push the element into the skills array
+                this.skills.push(purifyString(_itr.textContent))
+              }
+            } //end of extraction of top skills
+
+            itr = itr.nextElementSibling;
+            //extraction of other skills
+            if(itr.nextElementSibling) //check if "div" exists or not
+            {
+              _itr = itr.nextElementSibling; //establish inner iterator
+              var nodes = _itr.childNodes;
+              for(var i=1; i<nodes.length - 1; i++)
+              {
+                _itr = nodes[i].firstElementChild.nextElementSibling;
+                var li_nodes = _itr.childNodes;
+                for(var j=0; j<li_nodes.length; j++)
+                {
+                  if(li_nodes[j].className)
+                  {
+                    if(li_nodes[j].className.split(" ")[0] === "pv-skill-category-entity")
+                    {
+                      _itr = li_nodes[j].firstElementChild.firstElementChild;
+                      if(_itr.className === "relative" || _itr.className === "mr3" || _itr.className === "relative mr3") //check if div.relative || div.mr3 exists or not and adjust accordingly
+                        _itr = _itr.nextElementSibling;
+                    
+                      _itr = _itr.firstElementChild.firstElementChild;
+
+                      this.skills.push(purifyString(_itr.textContent));
+                    } //check the li_nodes class condn.
+                  }// if li_nodes[j] is not a text
+                }//the for condition on li_nodes
+              }// outer for loop
+            }
+          } // if condn to check if section exists
+        }     
+  }
 }// userProfile mirror object ends here
 
 
@@ -450,6 +521,7 @@ function extraction()
   user.getEmail();
   user.getExperience();
   user.getEducation();
+  user.getSkill();
   resp.todo = "auto_extraction";
   resp.data = user;
   

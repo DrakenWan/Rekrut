@@ -11,7 +11,8 @@ var user = {
         email: ""
     },
     education: [],
-    experience: []
+    experience: [],
+    skills: []
     //resume: ""
 }
 
@@ -43,6 +44,7 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse)
         var experience = getById("experience");
         var schoolinfo = getById("schoolinfo");
         var summary = getById("summary");
+        var skills = getById("skills");
 
         uname.value = user.name.trim();
         url.value = user.url.trim();
@@ -56,6 +58,7 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse)
         email.value = user.contact.email.trim();
         schoolinfo.value = JSON.stringify(user.education);
         summary.value = user.summary.trim();
+        skills.value = JSON.stringify(user.skills);
         //anchor_ele.replaceWith(createElementManual("a","",user.resume.trim()))   //code for resume retrieval
     }
     sendResponse("Success.EMR");  
