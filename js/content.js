@@ -327,6 +327,7 @@ var user = {
         {
             itr = itr.firstElementChild;
             //extraction of top skills
+            if(itr.nextElementSibling.nodeName.toLowerCase() === "button") itr = itr.nextElementSibling;
             if(itr.nextElementSibling) //check if "ol" exists or not
             {
               
@@ -554,7 +555,7 @@ function extraction()
       hr.onreadystatechange = function () {
         if(hr.readyState == 4 && hr.status == 200)
         {
-          //alert("");
+          alert("");
           alert("Details successfully sent.");
         }
       }
