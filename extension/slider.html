@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="./css/slider.css" type="text/css" rel="stylesheet" />
+        <link rel="stylesheet" href="./js/material/material.min.css">
+        <link rel="stylesheet" href="./js/material/material-design-iconic-font.min.css"/>
+        <link rel="stylesheet" href="./js/material/icon.css"/>
+        <script src="./js/material/material.min.js"></script>
+    </head>
+    <body >
+        <!-- header attempting miserably to add one -->
+        <!-- header has custom css trying to emulate a material design style. if possible do add material design css -->
+        <header id="myhead">
+            <!-- CLOSE EXTENSION BUTTON -->
+            <abbr title="Close the sidebar">
+                <div id="closebtn" class="closebtn button">
+                    <span id="closeicon">&times;</span>
+                </div>
+            </abbr>
+            <div id="title">
+            Rekrut
+            </div>
+
+                <!-- Simple Tooltip -->
+            <div class="tooltip1"> NOTE!
+                    <span class="tooltiptext1">
+                        <ul>
+                            <li>Please select "show more..." to retrieve all information properly.</li>
+                            <li>Scrolling Helps! If nothing works, scroll through the webpage and it might work.</li>
+                            <li>The information retrieved is editable. Make changes wherever you feel like but ensure you do not destroy the "object" formatting</li>
+                        </ul>
+                    </span>
+                </div>
+            <div id="logout-button"><abbr title="logout"><img id="logout-icon" src="./images/logout.png" /></abbr></div>
+        </header>
+        <section id="loader-section">
+            <div id="loader"></div>
+        </section>
+        <section id="extractdatapage" style="display:none;">
+            <!-- SLIDER CONTENT -->
+            <div id="slider-content" class="slider-content">
+                <form name="userdetails">
+                        <img alt="profile Pic" id="proPic"/> <br/>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <label class="labels" for="uname">Candidate Name</label>
+                            <input class="mdl-textfield__input" type="text" id="uname" name="uname"/>
+                            <label class="mdl-textfield__label" for="uname"></label>
+                        </div>
+
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <label class="labels" for="url">Profile URL</label>
+                            <input class="mdl-textfield__input" type="text" id="url" name="url" placeholder="linkedin url"/>
+                            <label class="mdl-textfield__label" for="url"></label>
+                        </div>
+        
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <label class="labels" for="location">Location</label>
+                            <input class="mdl-textfield__input" type="text" id="location" name="location" placeholder="location"/>
+                            <label class="mdl-textfield__label" for="location"></label>
+                        </div>
+
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <label class="labels" for="company">Current Company</label>
+                            <input class="mdl-textfield__input" type="text" id="company" name="company" placeholder="company name"/> 
+                            <label class="mdl-textfield__label" for="company"></label>
+                        </div>
+
+
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <label class="labels" for="education">Education</label>
+                            <input  class="mdl-textfield__input" type="text" id="education" name="education" placeholder="education institute"/>
+                            <label class="mdl-textfield__label" for="education"></label>
+                    </div>
+
+
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <label class="labels" for="email">Email</label><div class="tooltip1"> <span style="vertical-align: middle; font-size:30px;">&#9432;</span>
+                                <span class="tooltiptext1">Select "See contact info" text to retrieve email if it exists.</span>
+                            </div>
+                            <input  class="mdl-textfield__input" type="text" id="email" name="email" placeholder="email address"/>
+                            <label class="mdl-textfield__label" for="email"></label>
+                        </div>
+                        
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <label class="labels" for="summary">Summary</label>
+                            <textarea rows=3 class="mdl-textfield__input" id="summary" form="userdetails"></textarea>
+                            <label class="mdl-textfield__label"></label>
+                        </div>
+
+                        <!-- below divs are just for verification of certain data values that wont be visible -->
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <label class="labels" for="experience">Experience</label>
+                                <textarea rows=3 class="mdl-textfield__input" id="experience" form="userdetails"></textarea>
+                                <label class="mdl-textfield__label"></label>
+                        </div>
+                        
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <label class="labels" for="schoolinfo">Education</label>
+                            <textarea rows=3 class="mdl-textfield__input" id="schoolinfo" form="userdetails"></textarea>
+                            <label class="mdl-textfield__label"></label>
+                        </div>
+
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <label class="labels" for="skills">Skills</label>
+                            <textarea rows=4 class="mdl-textfield__input" id="skills" form="userdetails"></textarea>
+                            <label class="mdl-textfield__label"></label>
+                        </div>
+                        <input type="submit"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="submitDetails" name="submitDetails" value="Submit"/>
+                </form>
+            </div>
+        </section>
+        <!-- Footer -->
+        <footer id="myfoot">
+            <span id="time">
+              &copy; 2019
+            </span>
+            <button type="button" id="author" class="mdl-chip">
+                <span class="mdl-chip__text">Author</span>
+        </button>
+        </footer>
+    </body>
+    <script src="./js/slider.js"></script>
+    <script src="./js/jquery-3.4.1.min.js"></script>
+</html>
