@@ -12,8 +12,8 @@ var user = {
     },
     education: [],
     experience: [],
-    skills: []
-    //resume: ""
+    skills: [],
+    certifications: []
 }
 
 // Click event to toggle the slider using inframe button
@@ -45,6 +45,7 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse)
         var schoolinfo = getById("schoolinfo");
         var summary = getById("summary");
         var skills = getById("skills");
+        var certs = getById("certs");
 
         uname.value = user.name.trim();
         url.value = user.url.trim();
@@ -59,6 +60,7 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse)
         schoolinfo.value = JSON.stringify(user.education);
         summary.value = user.summary.trim();
         skills.value = JSON.stringify(user.skills);
+        certs.value = JSON.stringify(user.certifications);
         //anchor_ele.replaceWith(createElementManual("a","",user.resume.trim()))   //code for resume retrieval
     }
     sendResponse({msg: "Success.EMR"});  
