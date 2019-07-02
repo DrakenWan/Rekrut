@@ -5,22 +5,18 @@ to extract important details from a profile and store it in their recruitment da
 Current version is 3.0
 
 ## Installation or Setting Up
-
-**_Before you do anything, please take out the testing folder out of the root folder into some safe space. This is where your server code is. It contains sensitive files such as certificate key, models, etc._**
-
 You need to ensure that you have the following dependencies installed within your system:
 * [node.js](https://nodejs.org/en/download/) : Ensure this is in path.  
 * [mongodb](https://www.mongodb.com/download-center) : Ensure the mongodb is properly installed and it is accessible through shell.  
 
-1. [Clone](https://github.com/DrakenWan/Rekrut/archive/master.zip) this git folder into a suitable place in your system. Extract the folder out. Go to the [testing](./testing/test) folder (It is recommended that you separate this folder from its root and place it somewhere else. It will cause overhead when you load the extension into google chrome. This is why I recommend it.).
-2. Enter: <code>npm init</code>  
-  To install all the internal dependencies run:  
-  <code>npm install</code> (Keep pressing enter until it reaches the end of the description of the installation)  
-  After the package has installed itself in the [test](./testing/test) folder, type:  
+1. [Clone](https://github.com/DrakenWan/Rekrut/archive/master.zip) this git folder into a suitable place in your system. Extract the folder out. Go to the [test](./test) folder through command shell.
+2.   To install all the internal dependencies run:  
+  <code>npm install</code>
+  After the package has installed itself in the [test](./test) folder, type:  
   <code>node test.js</code>  
   >If there are some errors while running node.js please inform me promptly. They are most likely dependency error. If possible, you can see the name of missing module and type **<code>npm install _modulename_</code>**  
 3. Now that your server is running, ensure that your mongodb server is running in the background. It must be running by default (it runs on startup of PC).  
-4. Open chrome browser. Type <code>chrome://extensions</code>. Turn on `developer mode`. Click on the button `Load unpacked extension`. Browse the Rekrut-master folder and select it. The extension is installed within your system.
+4. Open chrome browser. Type <code>chrome://extensions</code>. Turn on `developer mode`. Click on the button `Load unpacked extension`. Browse the Rekrut-master folder and select ''extension'' folder. The extension is installed within your browser!
 
 > The extension will only work on [linkedin.com](https://www.linkedin.com) and only extract viable information from [linkedin.com/in/{profileurl}](https://www.linkedin.com/feed) pages. You will also need to login first.  
 
