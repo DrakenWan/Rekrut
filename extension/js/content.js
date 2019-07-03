@@ -554,6 +554,8 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
   }
 });
 
+var count = 0;
+
 // extraction method
 function extraction() {
 
@@ -577,13 +579,13 @@ function extraction() {
     if (nodesList[i])
       classNames.push(nodesList[i].className);
 
-    if (!nodesList[i])
+    if (!nodesList[i] && count++ == 0)
       console.log(nodeNames[i] + "A node has either been removed from the document or not loaded yet.");
     
     if (!localStorage[nodeNames[i]] && nodesList[i]) {
       localStorage[nodeNames[i]] = nodesList[i].className.trim();
     } else if (localStorage[nodeNames[i]] && nodesList[i]) {
-      if (localStorage[nodeNames[i]] !== nodesList[i].className && devmode) {
+      if (localStorage[nodeNames[i]] !== nodesList[i].className && devmode && count++ == 1 || count++ == 0) {
         console.log("\n\nClass name for " + nodeNames[i] + " has been changed form \"" + localStorage[nodeNames[i]] + "\" to  \"" + nodesList[i].className + "\"\n\n")
       }
     }
