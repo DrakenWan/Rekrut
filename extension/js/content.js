@@ -1,12 +1,7 @@
 const HOST = 'localhost'
 const isSecure = false;
-const SERVER_URL = ((isSecure) ? "https://" : "http://") + HOST + ":3000/"
 const devmode = true;
-/* ### TESTING CODE ### */
-
-// extracting nodes
-
-/* Testing code ends */
+const SERVER_URL = ((isSecure && !devmode) ? "https://" : "http://") + HOST + ":3000/"
 
 
 /* *** Object Definition Starts *** */
@@ -581,7 +576,7 @@ function extraction() {
 
     if (!nodesList[i] && count++ == 0)
       console.log(nodeNames[i] + "A node has either been removed from the document or not loaded yet.");
-    
+
     if (!localStorage[nodeNames[i]] && nodesList[i]) {
       localStorage[nodeNames[i]] = nodesList[i].className.trim();
     } else if (localStorage[nodeNames[i]] && nodesList[i]) {
@@ -590,7 +585,7 @@ function extraction() {
       }
     }
 
-  }// ze fore loop
+  } // ze fore loop
 
   /* testing code */
 
@@ -609,7 +604,7 @@ function extraction() {
   resp.data = user;
 
   chrome.runtime.sendMessage(resp, function (msg) {
-   // console.log("Auto extraction message sent.");
+    // console.log("Auto extraction message sent.");
   });
 }
 
