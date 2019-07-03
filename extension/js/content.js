@@ -1,6 +1,13 @@
-//constants
 const HOST = 'localhost'
-const SERVER_URL = "https://" + HOST + ":3000/"
+const isSecure = false;
+const SERVER_URL = ((isSecure) ? "https://" : "http://") + HOST + ":3000/"
+const devmode = true;
+/* ### TESTING CODE ### */
+
+// extracting nodes
+
+/* Testing code ends */
+
 
 /* *** Object Definition Starts *** */
 
@@ -395,10 +402,10 @@ var user = {
 
               if (_itr.className.toLowerCase() == "pv-entity__logo") {
                 _itr = _itr.nextElementSibling;
-                if(_itr.firstElementChild) {
+                if (_itr.firstElementChild) {
                   cert.title = purifyString(_itr.firstElementChild.textContent);
-                  if(_itr.firstElementChild.nextElementSibling)
-                   cert.issuer = purifyString(_itr.firstElementChild.nextElementSibling.lastElementChild.textContent);
+                  if (_itr.firstElementChild.nextElementSibling)
+                    cert.issuer = purifyString(_itr.firstElementChild.nextElementSibling.lastElementChild.textContent);
                 }
               } else {
                 if (_itr.firstElementChild) //<div> summary
@@ -549,6 +556,42 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
 
 // extraction method
 function extraction() {
+
+  /* testing code */
+
+  var mtsname = document.getElementsByClassName("pv-top-card-v3--list")[0];
+  var mtslocation = document.getElementsByClassName("pv-top-card-v3--list")[1];
+  var mtscompany = document.getElementsByClassName("pv-top-card-v3--experience-list-item")[0];
+  var mtsschool = document.getElementsByClassName("pv-top-card-v3--experience-list-item")[1];
+  var mtsabout = document.getElementsByClassName("pv-about-section")[0];
+  var mtsexperience = document.getElementsByClassName("experience-section")[0];
+  var mtseducation = document.getElementsByClassName("education-section")[0];
+  var mtsskills = document.getElementsByClassName("pv-skill-categories-section")[0];
+  var mtscertifications = document.getElementById("certifications-section");
+  var mtsimg = document.getElementsByClassName("pv-top-card-section__photo")[0];
+  var nodesList = [mtsname, mtslocation, mtscompany, mtsschool, mtsimg, mtsabout, mtsexperience, mtseducation, mtsskills, mtscertifications];
+  var nodeNames = ["name", "location", "company", "school", "propic", "about", "exp", "edu", "skills", "certs"];
+  var classNames = [];
+
+  for (i = 0; i < nodesList.length; i++) {
+    if (nodesList[i])
+      classNames.push(nodesList[i].className);
+
+    if (!nodesList[i])
+      console.log(nodeNames[i] + "A node has either been removed from the document or not loaded yet.");
+    
+    if (!localStorage[nodeNames[i]] && nodesList[i]) {
+      localStorage[nodeNames[i]] = nodesList[i].className.trim();
+    } else if (localStorage[nodeNames[i]] && nodesList[i]) {
+      if (localStorage[nodeNames[i]] !== nodesList[i].className && devmode) {
+        console.log("\n\nClass name for " + nodeNames[i] + " has been changed form \"" + localStorage[nodeNames[i]] + "\" to  \"" + nodesList[i].className + "\"\n\n")
+      }
+    }
+
+  }// ze fore loop
+
+  /* testing code */
+
   user.getName();
   user.getUrl();
   user.getSummary();
@@ -564,7 +607,7 @@ function extraction() {
   resp.data = user;
 
   chrome.runtime.sendMessage(resp, function (msg) {
-    console.log("Auto extraction message sent.");
+   // console.log("Auto extraction message sent.");
   });
 }
 

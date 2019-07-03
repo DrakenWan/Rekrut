@@ -1,61 +1,66 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Login</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="./css/slider.css" type="text/css" rel="stylesheet" />
-        <link rel="stylesheet" href="./js/material/material.min.css">
-        <link rel="stylesheet" href="./js/material/material-design-iconic-font.min.css"/>
-        <link rel="stylesheet" href="./js/material/icon.css"/>
-        <script src="./js/material/material.min.js"></script>
-        <style>
-            
-        </style>
-    </head>
-    <body>
-        <header id="myhead">
-            <!-- CLOSE EXTENSION BUTTON -->
-            <abbr title="Close the sidebar">
-                <div id="closebtn" class="closebtn button">
-                    <span id="closeicon">&times;</span>
-                </div>
-            </abbr>
-            <div id="title">
-            Rekrut
+
+<head>
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/slider.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="./js/material/material.min.css">
+    <link rel="stylesheet" href="./js/material/material-design-iconic-font.min.css" />
+    <link rel="stylesheet" href="./js/material/icon.css" />
+    <script src="./js/material/material.min.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <header id="myhead">
+        <!-- CLOSE EXTENSION BUTTON -->
+        <abbr title="Close the sidebar">
+            <div id="closebtn" class="closebtn button">
+                <span id="closeicon">&times;</span>
             </div>
-        </header>
-        <section id="loader-section">
-            <div id="loader"></div>
-        </section>
-        
-        <section id="loginsect" style="display:none;">
-                <form name="userdetails" id="userdetails">
-                        <div id="error-msg" style="display: none;">Please fill in the empty fields</div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <label class="labels" for="uname">Username</label>
-                            <input class="mdl-textfield__input" type="text" id="uname" name="uname" placeholder="Enter Username"/>
-                            <label class="mdl-textfield__label" for="uname"></label>
-                        </div>
+        </abbr>
+        <div id="title">
+            Rekrut
+        </div>
+    </header>
+    <section id="loader-section">
+        <div id="loader"></div>
+    </section>
 
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <label class="labels" for="url">Password</label>
-                            <input class="mdl-textfield__input" type="password" id="pwd" name="pwd" placeholder="Enter Password"/>
-                            <label class="mdl-textfield__label" for="pwd"></label>
-                        </div>
+    <section id="loginsect" style="display:none;">
+        <form name="userdetails" id="userdetails">
+            <div id="error-msg" style="display: none;">Please fill in the empty fields</div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <label class="labels" for="uname">Username</label>
+                <input class="mdl-textfield__input" type="text" id="uname" name="uname" placeholder="Enter Username" />
+                <label class="mdl-textfield__label" for="uname"></label>
+            </div>
 
-                        <input type="submit"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="login" name="login" value="Login"/>
-                        
-                </form>
-        </section>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <label class="labels" for="url">Password</label>
+                <input class="mdl-textfield__input" type="password" id="pwd" name="pwd" placeholder="Enter Password" />
+                <label class="mdl-textfield__label" for="pwd"></label>
+            </div>
 
-        <footer id="myfoot">
-            <span id="time">
-                &copy; 2019
-            </span>
-            <button type="button" id="author" class="mdl-chip">
-                <span class="mdl-chip__text">Author</span>
-            </button>
-        </footer>
-    </body>
-    <script src="./js/login.js"></script>
+            <input type="submit"
+                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="login"
+                name="login" value="Login" />
+
+        </form>
+    </section>
+
+    <footer id="myfoot">
+        <span id="time">
+            &copy; 2019
+        </span>
+        <button type="button" id="author" class="mdl-chip">
+            <span class="mdl-chip__text">Author</span>
+        </button>
+    </footer>
+</body>
+<script src="./js/login.js"></script>
+
 </html>

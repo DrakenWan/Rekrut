@@ -1,4 +1,4 @@
-var user =  {
+var user = {
   name: "",
   url: "",
   location: "",
@@ -7,12 +7,10 @@ var user =  {
   company: {
     name: ""
   },
-  current_education:
-  {
+  current_education: {
     name: ""
   },
-  contact:
-  {
+  contact: {
     email: ""
   },
   experience: [],

@@ -6,8 +6,7 @@ var user = {
     image: undefined,
     summary: "",
     experience_list: ["", ""],
-    contact:
-    {
+    contact: {
         email: ""
     },
     education: [],
@@ -17,22 +16,24 @@ var user = {
 }
 
 // Click event to toggle the slider using inframe button
-document.getElementById("closebtn").addEventListener("click", function()
-{
+document.getElementById("closebtn").addEventListener("click", function () {
     //closing the slider request sent
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
-        chrome.tabs.sendMessage(tabs[0].id,{todo: "toggle"});
+    chrome.tabs.query({
+        active: true,
+        currentWindow: true
+    }, function (tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, {
+            todo: "toggle"
+        });
     })
 });
 
 
 // auto extracted profile data onMessage receiver
-chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse)
-{
-    if(msg.todo == "auto_extraction")
-    {
+chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
+    if (msg.todo == "auto_extraction") {
         user = msg.data;
-        console.log("Extraction message received.");
+        //console.log("Extraction message received.");
         var uname = getById("uname");
         var url = getById("url");
         //var summary = getById("summary"); Reducing data overhead
@@ -63,64 +64,77 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse)
         certs.value = JSON.stringify(user.certifications);
         //anchor_ele.replaceWith(createElementManual("a","",user.resume.trim()))   //code for resume retrieval
     }
-    sendResponse({msg: "Success.EMR"});  
+    sendResponse({
+        msg: "Success.EMR"
+    });
 })
 
 // sendMessage for automatic extraction of the data from profile
-chrome.tabs.query({active: true, currentWindow: true}, function(tab)
-{
-    console.log("Extraction Command Sent.");
+chrome.tabs.query({
+    active: true,
+    currentWindow: true
+}, function (tab) {
+    //console.log("Extraction Command Sent.");
     //the redundancy of lines below is due to onUpdated even only firing when links are clicked or DOM content is updated
     //So I added the same code right above the listenere.
-    chrome.tabs.sendMessage(tab[0].id, {todo: "auto_extraction_notbutton"});
-    chrome.tabs.onUpdated.addListener(function()
-    {
-        chrome.tabs.sendMessage(tab[0].id, {todo: "auto_extraction_notbutton"});
+    chrome.tabs.sendMessage(tab[0].id, {
+        todo: "auto_extraction_notbutton"
+    });
+    chrome.tabs.onUpdated.addListener(function () {
+        chrome.tabs.sendMessage(tab[0].id, {
+            todo: "auto_extraction_notbutton"
+        });
     });
 });
 
 // the code is itself descriptive
-function getById(id)
-{
+function getById(id) {
     var element = document.getElementById(id);
     return element;
 }
 
 //sendMessage to background/events.js
-document.getElementById("submitDetails").addEventListener("click", function()
-{
-    chrome.tabs.query({active: true, currentWindow: true}, function(tab)
-    {
-        chrome.tabs.sendMessage(tab[0].id, {todo: "send_data_to_server", data: user});
+document.getElementById("submitDetails").addEventListener("click", function () {
+    chrome.tabs.query({
+        active: true,
+        currentWindow: true
+    }, function (tab) {
+        chrome.tabs.sendMessage(tab[0].id, {
+            todo: "send_data_to_server",
+            data: user
+        });
     });
 });
 
 //creatElement
-function createElementManual(name, styleObj, href="")
-{
+function createElementManual(name, styleObj, href = "") {
     var ele = document.createElement(name);
-    if(href!= undefined || href != "")
+    if (href != undefined || href != "")
         ele.setAttribute("href", href);
     return ele;
 }
 
-document.getElementById("author").addEventListener("click", function()
-{
+document.getElementById("author").addEventListener("click", function () {
     var goto = "https://www.github.com/drakenwan"
-    chrome.tabs.create({url:goto})
+    chrome.tabs.create({
+        url: goto
+    })
 })
 
-setTimeout(function()
-{
+setTimeout(function () {
     document.getElementById("loader-section").style = "display:none;";
-    if(document.getElementById("extractdatapage"))
+    if (document.getElementById("extractdatapage"))
         document.getElementById("extractdatapage").style = "display:block;";
 }, 100)
 
-document.getElementById("logout-button").addEventListener("click", function()
-{
-    chrome.tabs.query({active: true, currentWindow: true}, function(tab)
-    {
-        chrome.tabs.sendMessage(tab[0].id, {todo: "logout_extension", data: user});
+document.getElementById("logout-button").addEventListener("click", function () {
+    chrome.tabs.query({
+        active: true,
+        currentWindow: true
+    }, function (tab) {
+        chrome.tabs.sendMessage(tab[0].id, {
+            todo: "logout_extension",
+            data: user
+        });
     });
 });

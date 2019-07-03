@@ -2,25 +2,23 @@
     "name": "Rekrut",
     "version": "3.0",
     "description": "for recruiters",
-     
-    "background":{
+
+    "background": {
         "scripts": ["./js/events.js"]
     },
     "icons": {
-       "128": "./images/icon128.png" 
+        "128": "./images/icon128.png"
     },
-    "page_action":
-    {
+    "page_action": {
         "default_title": "Linkedin scraper for recruiters"
     },
 
-    "content_scripts":
-    [{
-        "matches":["https://www.linkedin.com/*"],
-        "js":["./js/content.js"],
-        "css":["./css/slider.css"]
+    "content_scripts": [{
+        "matches": ["https://www.linkedin.com/*"],
+        "js": ["./js/content.js"],
+        "css": ["./css/slider.css"]
     }],
     "manifest_version": 2,
-    "permissions":["storage","tabs", "activeTab", "<all_urls>", "declarativeContent", "notifications", "http://*:*/"],
-    "web_accessible_resources":["login.html","slider.html", "/css/slider.css", "/js/login.js","/js/slider.js", "/js/material/material.min.css","/js/material/material.min.js","/js/material/material-design-iconic-font.min.css","./js/material/icon.css"]
+    "permissions": ["storage", "tabs", "activeTab", "<all_urls>", "declarativeContent", "notifications", "http://*:*/"],
+    "web_accessible_resources": ["login.html", "slider.html", "/css/slider.css", "/js/login.js", "/js/slider.js", "/js/material/material.min.css", "/js/material/material.min.js", "/js/material/material-design-iconic-font.min.css", "./js/material/icon.css"]
 }

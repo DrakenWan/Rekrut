@@ -1,5 +1,4 @@
-var rekruter =
-{
+var rekruter = {
     username: "",
     password: "",
     token: ""

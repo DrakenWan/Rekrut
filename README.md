@@ -8,12 +8,13 @@ Current version is 3.0
 You need to ensure that you have the following dependencies installed within your system:
 * [node.js](https://nodejs.org/en/download/) : Ensure this is in path.  
 * [mongodb](https://www.mongodb.com/download-center) : Ensure the mongodb is properly installed and it is accessible through shell.  
+* [npm](https://nodejs.org/en/download/) : Node Package Manager to install Rekrut Server dependencies and other stuff
 
 1. [Clone](https://github.com/DrakenWan/Rekrut/archive/master.zip) this git folder into a suitable place in your system. Extract the folder out. Go to the [test](./test) folder through command shell.
 2.   To install all the internal dependencies run:  
   <code>npm install</code>
   After the package has installed itself in the [test](./test) folder, type:  
-  <code>node test.js</code>  
+  <code>npm start</code> or you can even type <code>node test.js &lt; database &gt; &lt; portnumber &gt;</code>. The latter one will let you manually choose a database and port number of your choice. If you choose a new database name then the details will store from scratch. 
   >If there are some errors while running node.js please inform me promptly. They are most likely dependency error. If possible, you can see the name of missing module and type **<code>npm install _modulename_</code>**  
 3. Now that your server is running, ensure that your mongodb server is running in the background. It must be running by default (it runs on startup of PC).  
 4. Open chrome browser. Type <code>chrome://extensions</code>. Turn on `developer mode`. Click on the button `Load unpacked extension`. Browse the Rekrut-master folder and select ''extension'' folder. The extension is installed within your browser!
@@ -31,29 +32,19 @@ Go back to chrome. Login with your registered details. The browser will check if
 ## 3.1
 Rekrut3.1 has new features added to it. Now it has a login feature and if the rekruter's (recruiter's) name is within the database only then they
 are able to access the extension's main feature. The details are stored in the database without any failure.  
-Small bugs were removed.  
-* _3.1.2_  
-  Feature to logout the user has been added. _3.1.2_
-
-* _3.1.3_  
-  Security issues resolved.
-
-* _3.1.4_
-  OpenSSL certificate added into the server. The extension will work over https now. (It will not work on any other IP host other than 'localhost' possibly due to my invalidated certificate on browser.)
+Small bugs were removed.   
+* Feature to logout the user has been added. _3.1.2_
+* OpenSSL certificate added into the server. The extension will work over https now. (It will not work on any other IP host other than       'localhost' possibly due to my invalidated certificate on browser.)
   > **Note:** The certificate will be invalidated by browser because I, as an issuer, am not valid.
   If you have certificates from appropriate authorities such as comodo, symantec, etc. then you can deploy the certificate into the server folder with its key. Just little changes needed to be made to the <code> test.js </code> file for certification. Add the object <code> {key: fs.readFileSync('yourkeyfilename'), cert: fs.readFileSync('yourcertificatefilename'), passphrase: yourpassphrase} </code> at <code> **|1|** </code> in the code: <code> https.createServer( |1|, app).listen(3000) </code>. This will work if you have the valid certificate. 
   Then you can change the HOST name in the content.js file of extension and reload the extension it will work fine.
+* Added the feature to extract skill. The feature is working fine in almost all profile pages.  The issue in previous code update has been resolved. **One can retrieve the details from their own profile too.**
 
-## 3.2
-* _3.2.1_
-  Added the feature to extract skill. The feature is working fine in almost all profile pages. 
-  > **Note:** The skills will not be extracted from one's own login profile page. I am still looking how to resolve this issue. The DOM content is being analysed but I haven't found out any errors yet and thoroughly tested my code but still the deployment shows error.
-* _3.2.2_
-  The issue in previous code update has been resolved. **One can retrieve the details from their own profile too.**
-
-* _3.2.3_
-  Can now extract licenses and certifications section. 
+* Can now extract licenses and certifications section. 
   >If there are any errors please inform me with a screenshot of the developer console error message. (Press F12) to open dev console.
+
+* [timestamp: 7319525]: lot of changes done. Starting procedure of server changed. Added secure and unsecure server selection option in the server file. If <code>isSecure</code> is changed in both <code> test.js</code> and <code>content.js</code> file to <code> false </code> then server will share details over unsecure server. Also added <code>devmode</code> constant. If set to <code> true</code> certain features will be accessed. Such as the details of working will be shared on development console. By default these are set to true. You can change them to false. They will not interfere with normal UI of the extension.
+  
 ### UI
 The UI generated by me sucks big time. Although aesthetically it looks okay but UX is still lacking. If anyone can help me with such please do feel free to [contact](mailto:kartikaykaul13@gmail.com). I have implemented some features of material design and my own CSS customizations.
 
