@@ -1,11 +1,14 @@
+const devmode = true;
 var manifest = chrome.runtime.getManifest();
 var appName = manifest.name;
 var appVersion = manifest.version;
 
 //running on app reload
 chrome.runtime.onInstalled.addListener(function () {
-    console.log(appName + appVersion + " is reloaded.");
-    //console.log("Draken sends his regards.");
+    if (devmode) {
+        console.log(appName + appVersion + " is reloaded.");
+        console.log("Draken sends his regards.");
+    }
 });
 
 //checking for pagAction request
@@ -16,13 +19,12 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             currentWindow: true
         }, function (tabs) {
             chrome.pageAction.show(tabs[0].id);
-        })
+        });
     }
 });
 
-/* background request sent to content.js whenever extension icon is clicked
-   this is a pageAction listener for toggling the slider
-*/
+/* request to toggle slider whenever extension icon clicked
+ */
 chrome.pageAction.onClicked.addListener(function () {
     chrome.tabs.query({
         active: true,

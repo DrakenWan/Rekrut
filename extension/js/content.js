@@ -566,9 +566,7 @@ function extraction() {
   resp.todo = "auto_extraction";
   resp.data = user;
 
-  chrome.runtime.sendMessage(resp, function (msg) {
-    if (devmode) console.log("Auto extraction message sent." + JSON.stringify());
-  });
+  chrome.runtime.sendMessage(resp);
 }
 
 

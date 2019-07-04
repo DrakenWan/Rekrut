@@ -1,9 +1,11 @@
+//recruiter's details object
 var rekrut = {
     username: "",
     password: "",
     token: ""
 }
 
+// Github profile of Author
 document.getElementById("author").addEventListener("click", function () {
     var goto = "https://www.github.com/drakenwan"
     chrome.tabs.create({
@@ -13,7 +15,6 @@ document.getElementById("author").addEventListener("click", function () {
 
 // Click event to toggle the slider using inframe button
 document.getElementById("closebtn").addEventListener("click", function () {
-    //closing the slider request sent
     chrome.tabs.query({
         active: true,
         currentWindow: true
@@ -24,7 +25,6 @@ document.getElementById("closebtn").addEventListener("click", function () {
     })
 });
 
-// the code is itself descriptive
 function getById(id) {
     var element = document.getElementById(id);
     return element;
@@ -62,7 +62,6 @@ document.getElementById("userdetails").addEventListener("submit", function (even
                     background-color:  #f3f1f1;\
                     transition: 0.4s;";
 
-        //static variable use
         if (typeof this.counter == 'undefined') {
             this.counter = 0;
         } else {

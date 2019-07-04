@@ -1,4 +1,5 @@
-//user profile details object
+const devmode = true;
+
 var user = {
     name: "",
     url: "",
@@ -28,15 +29,13 @@ document.getElementById("closebtn").addEventListener("click", function () {
     })
 });
 
-
 // auto extracted profile data onMessage receiver
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     if (msg.todo == "auto_extraction") {
         user = msg.data;
-        //console.log("Extraction message received.");
+        if (devmode) console.log("Extraction message received.");
         var uname = getById("uname");
         var url = getById("url");
-        //var summary = getById("summary"); Reducing data overhead
         var proPic = getById("proPic");
         var loc = getById("location");
         var comp = getById("company");
@@ -50,7 +49,6 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
 
         uname.value = user.name.trim();
         url.value = user.url.trim();
-        //summary.value = user.summary.trim(); //reducing data overhead
         proPic.src = user.image;
         loc.value = user.location.trim();
         comp.value = user.experience_list[1].trim();
@@ -62,7 +60,6 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
         summary.value = user.summary.trim();
         skills.value = JSON.stringify(user.skills);
         certs.value = JSON.stringify(user.certifications);
-        //anchor_ele.replaceWith(createElementManual("a","",user.resume.trim()))   //code for resume retrieval
     }
     sendResponse({
         msg: "Success.EMR"
@@ -74,9 +71,8 @@ chrome.tabs.query({
     active: true,
     currentWindow: true
 }, function (tab) {
-    //console.log("Extraction Command Sent.");
-    //the redundancy of lines below is due to onUpdated even only firing when links are clicked or DOM content is updated
-    //So I added the same code right above the listenere.
+    if (devmode) console.log("Extraction Command Sent.");
+
     chrome.tabs.sendMessage(tab[0].id, {
         todo: "auto_extraction_notbutton"
     });
@@ -87,13 +83,11 @@ chrome.tabs.query({
     });
 });
 
-// the code is itself descriptive
 function getById(id) {
     var element = document.getElementById(id);
     return element;
 }
 
-//sendMessage to background/events.js
 document.getElementById("submitDetails").addEventListener("click", function () {
     chrome.tabs.query({
         active: true,
@@ -106,7 +100,6 @@ document.getElementById("submitDetails").addEventListener("click", function () {
     });
 });
 
-//creatElement
 function createElementManual(name, styleObj, href = "") {
     var ele = document.createElement(name);
     if (href != undefined || href != "")
