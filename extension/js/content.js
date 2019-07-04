@@ -3,23 +3,18 @@ const isSecure = false;
 const devmode = true;
 const SERVER_URL = ((isSecure && !devmode) ? "https://" : "http://") + HOST + ":3000/"
 
-
-/* *** Object Definition Starts *** */
-
-//response object template
-var resp = {
-  todo: "", //action to be done 
-  data: undefined //object to be sent
+var resp = { //response object
+  todo: "",
+  data: undefined
 }
 
-// Template for linkedin Profile
+/* ### Profile ruleset ### */
 var templateIN = {
   name: "pv-top-card-v3--list",
-  url: "",
   location: "pv-top-card-v3--list",
   image: "pv-top-card-section__photo",
   summary: "pv-about-section", // reducing data overhead
-  company: "pv-top-card-v3--experience-list-item",
+  company: "pv-top-card-v3--experience-list-item", //data retrieved will be filled in experience_list
   experience_list: [],
   contact: {
     email: "pv-contact-info__header"
@@ -53,14 +48,6 @@ class School {
   }
 }
 
-//skill object : not sure if we will make use of this object class at all
-class skills {
-  constructor() {
-    this.topskills = [];
-    this.skills = [];
-  }
-}
-
 //certifications object
 class certificate {
   constructor() {
@@ -70,22 +57,21 @@ class certificate {
   }
 }
 
-// Temporary pass object : mirrors the templateIN variable
 // this object has methods to retrieve its data
 var user = {
   name: "",
-  url: "",
-  location: "",
-  summary: "",
-  image: undefined,
-  experience_list: ["", ""],
+  url: "", //linkedin profile URL
+  location: "", //current location
+  summary: "", //about section
+  image: undefined, // takes image else a dummy images
+  experience_list: ["", ""], //takes company and school list
   contact: {
-    email: ""
+    email: "" //email if it exists
   },
-  experience: [],
-  education: [],
-  skills: [],
-  certifications: [],
+  experience: [], // experience section : object
+  education: [], //education section : object
+  skills: [], //skills : string
+  certifications: [], //certifications : object
   init() {
 
   },
@@ -119,20 +105,18 @@ var user = {
   },
   getLatestExperienceList: function () {
     user.experience_list = ["", ""];
-    if (document.getElementsByClassName(templateIN.company)) //current company if it exists
-    {
+    if (document.getElementsByClassName(templateIN.company)) {
       var temp = document.getElementsByClassName(templateIN.company);
+
       for (var i = 0; i < temp.length; i++) {
         if (temp[i].getAttribute("data-control-name") == "education_see_more") {
           temp[i] = temp[i].lastElementChild;
           user.experience_list[0] = temp[i].textContent.trim();
-          //console.log(user.experience_list[0]);
         }
 
         if (temp[i].getAttribute("data-control-name") == "position_see_more") {
           temp[i] = temp[i].lastElementChild;
           user.experience_list[1] = temp[i].textContent.trim();
-          //console.log(user.experience_list[1]);
         }
       }
     }
@@ -149,11 +133,9 @@ var user = {
     }
   },
   getEmail: function () {
-    //finding mail
     if (document.getElementsByClassName(templateIN.contact.email)) {
       var x = document.getElementsByClassName(templateIN.contact.email);
 
-      //loop to find email
       var flag = 0;
       for (var i = 0; i < x.length; i++) {
         if (x[i].textContent.trim().toLowerCase() == "email") {
@@ -161,20 +143,18 @@ var user = {
           user.contact.email = x[i].nextElementSibling.textContent;
           flag = 1;
           break;
-        } //condition to check email
+        }
       }
       if (flag == 0) user.contact.email = "";
-    } //contact set email
+    }
   }, //getEmail method ends here
 
   getExperience: function ()
-  //gets the experience array filling 
   //works perfectly unless linkedin loses its mind and changes their document format
   {
-    user.experience = []; //flush out old values from array
+    user.experience = []; //flush out old values
     var exp = document.getElementsByClassName("experience-section")[0];
-    //console.log(exp);
-    if (exp != undefined || exp != null) // if experience header is there or not
+    if (exp != undefined || exp != null) // if experience header exists
     {
       var itr = exp.firstElementChild.nextElementSibling;
       var jobs = itr.childNodes;
@@ -186,7 +166,7 @@ var user = {
           if (temp.nodeName.toLowerCase() == "li")
             temp = temp.firstElementChild; //leveling the tree structure
 
-          var data_div = temp.firstElementChild.firstElementChild; //
+          var data_div = temp.firstElementChild.firstElementChild;
           var ul_ver = data_div.nextElementSibling; //ul verifier
           if (ul_ver && ul_ver.nodeName.toLowerCase() == "ul") {
             data_div = data_div.firstElementChild.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.lastElementChild;
@@ -250,9 +230,8 @@ var user = {
     } //if cond for exp != null
   }, //getExperience method ends here
 
-
-  // the below code needs to be changed
   getEducation: function () {
+    // this code can be improved
     user.education = [] //flush out old values from array
 
     if (document.getElementsByClassName("education-section")[0]) //if education-section exists
@@ -312,11 +291,10 @@ var user = {
         } //if the node is "li" or not
       } //for loop for iterating through the list of institutes
     } // if condn for education-section's existence
-  },
+  }, //getEducation method ends here
   getSkill: function () {
     user.skills = []; //flush them stoopid skills
     if (document.getElementsByClassName("pv-skill-categories-section")) {
-      // establish our iterator
       var itr = document.getElementsByClassName("pv-skill-categories-section")[0];
 
       if (itr) {
@@ -346,7 +324,7 @@ var user = {
         //extraction of other skills
         if (itr.nextElementSibling) //check if "div" exists or not
         {
-          _itr = itr.nextElementSibling; //establish inner iterator
+          _itr = itr.nextElementSibling
           var nodes = _itr.childNodes;
           for (var i = 1; i < nodes.length - 1; i++) {
             _itr = nodes[i].firstElementChild.nextElementSibling;
@@ -355,25 +333,25 @@ var user = {
               if (li_nodes[j].className) {
                 if (li_nodes[j].className.split(" ")[0] === "pv-skill-category-entity") {
                   _itr = li_nodes[j].firstElementChild.firstElementChild;
-                  if (_itr.className === "relative" || _itr.className === "mr3" || _itr.className === "relative mr3") //check if div.relative || div.mr3 exists or not and adjust accordingly
+
+                  //check if div.relative || div.mr3 exists or not and adjust accordingly
+                  if (_itr.className === "relative" || _itr.className === "mr3" || _itr.className === "relative mr3")
                     _itr = _itr.nextElementSibling;
-
                   _itr = _itr.firstElementChild.firstElementChild;
-
                   this.skills.push(purifyString(_itr.textContent));
                 } //check the li_nodes class condn.
               } // if li_nodes[j] is not a text
             } //the for condition on li_nodes
           } // outer for loop
         }
-      } // if condn to check if section exists
+      } // "if" condn to check if section exists
     }
   }, //getSkill method ends here
 
   getCertifications: function () {
-    user.certifications = []; //flush this snitch!
+    user.certifications = []; //flush the array
 
-    //check if the section even exists
+    //check if the section exists
     if (document.getElementById("certifications-section")) {
       var itr = document.getElementById("certifications-section");
       if (itr.firstElementChild) {
@@ -427,7 +405,6 @@ var user = {
               }
               this.certifications.push(cert);
             } //if nodeName == "li" ends here
-
           } // our beloved for-loop
         }
       }
@@ -436,13 +413,53 @@ var user = {
 } // userProfile mirror object ends here
 
 
+//below are the functionalities for setting up our iframe
+function SetupIframe(source) {
+  var iframe = document.createElement('iframe');
+  iframe = createIframe(iframe, source, "slidermenuiframe")
+  styleIframe(iframe)
+  return iframe
+}
+
+function removeIframe(id, src) {
+  var newframe = SetupIframe(src);
+  document.getElementById(id).replaceWith(newframe);
+  var frame = document.getElementById(id);
+  toggle();
+  return frame;
+}
+
+function createIframe(iframe, src, id) {
+  iframe.id = id;
+  iframe.src = chrome.extension.getURL(src);
+  return iframe
+}
+
+function styleIframe(iframe) {
+  iframe.style.background = "#f7f7f7";
+  iframe.style.height = "100%";
+  iframe.style.width = "0px";
+  iframe.style.position = "fixed";
+  iframe.style.top = "0px";
+  iframe.style.right = "0px";
+  iframe.style.zIndex = "9000000000000000000";
+  //iframe.style.borderLeft = "5px solid #becde5";
+  iframe.frameBorder = "none";
+  iframe.style.transition = "0.5s";
+}
+
+function appendIframe(iframe) {
+  document.body.appendChild(iframe); //append to the current website
+}
+
 var iframe = undefined;
+////////////////////////////////////////====== Definitions End Here ======/////////////////////////////////////////////
+
 /* ##### IFRAME IMPLEMENTATION ######### */
 var xhr = new XMLHttpRequest();
 var url = SERVER_URL + "tokenCheck";
 
 xhr.open("POST", url, true);
-//console.log(localStorage["token"]);
 if (localStorage["token"])
   xhr.send(localStorage["token"]);
 else {
@@ -488,59 +505,7 @@ xhr.onreadystatechange = function () {
   }
 }
 
-
-/*
-testing purposes
-var iframe = SetupIframe("./login.html");
-appendIframe(iframe);
-*/
-
-//below are the functionalities for setting up our iframe
-function SetupIframe(source) {
-  var iframe = document.createElement('iframe');
-  iframe = createIframe(iframe, source, "slidermenuiframe")
-  styleIframe(iframe)
-  return iframe
-}
-
-function removeIframe(id, src) {
-  var newframe = SetupIframe(src);
-  document.getElementById(id).replaceWith(newframe);
-  var frame = document.getElementById(id);
-  toggle();
-  return frame;
-}
-
-/* creation of iframe on the webpage */
-function createIframe(iframe, src, id) {
-  iframe.id = id;
-  iframe.src = chrome.extension.getURL(src);
-  return iframe
-}
-
-//iframe styling function
-function styleIframe(iframe) {
-  // adding css style below with animation
-  iframe.style.background = "#f7f7f7";
-  iframe.style.height = "100%";
-  iframe.style.width = "0px";
-  iframe.style.position = "fixed";
-  iframe.style.top = "0px";
-  iframe.style.right = "0px";
-  iframe.style.zIndex = "9000000000000000000";
-  //iframe.style.boxShadow = "10px 10px 8px #888888";
-  //iframe.style.borderLeft = "5px solid #becde5";
-  iframe.frameBorder = "none";
-  iframe.style.transition = "0.5s";
-}
-
-//iframe append to document
-function appendIframe(iframe) {
-  document.body.appendChild(iframe); //append to the current website
-}
-/* *** End of Data Definition Part */
-
-//listen for msg from event
+// Message listener for "Extraction"
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
   if (msg.todo == "auto_extraction_notbutton") {
     extraction(); //to add some spice
@@ -551,9 +516,7 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
 
 var count = 0;
 
-// extraction method
 function extraction() {
-
   /* testing code */
 
   var mtsname = document.getElementsByClassName("pv-top-card-v3--list")[0];
@@ -585,7 +548,7 @@ function extraction() {
       }
     }
 
-  } // ze fore loop
+  }
 
   /* testing code */
 
@@ -604,11 +567,12 @@ function extraction() {
   resp.data = user;
 
   chrome.runtime.sendMessage(resp, function (msg) {
-    // console.log("Auto extraction message sent.");
+    if (devmode) console.log("Auto extraction message sent." + JSON.stringify());
   });
 }
 
-//request accepted from events.js page to toggle the slider
+
+// Message Listener: listen to toggle or send data to server
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
   if (msg.todo == "toggle") {
     toggle();
@@ -634,13 +598,11 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
   }
 });
 
-// nothing to bother about : just for testing purposes : run along
-// just don't delete it
+
 resp.todo = "showPageAction";
 resp.data = undefined;
 chrome.runtime.sendMessage(resp);
 
-//toggle function invoked whenever extension icon clicked
 function toggle() {
   if (iframe.style.width == "0px") {
     iframe.style.width = "400px";
@@ -648,33 +610,6 @@ function toggle() {
     iframe.style.width = "0px";
   }
 }
-
-/* Residual code that might come handy in future
-   is below:- 
-
-/* template object for iframe
-    can be employed for future use
-var iframe_template = {
-  src: "",
-  id: "",
-  background: "",
-  height: "",
-  width: "",
-  position: "",
-  top: "",
-  right: "",
-  zIndex: "",
-  border: "",
-  borderLeft: "",
-  borderRight: "",
-  frameBorder: "",
-  transition: ""
-  //add more styles if you want to
-} 
-
-//assign a temporary iframe variable
-var iframe_temp = iframe_template;
-*/
 
 //string purify
 function purifyString(string) {
@@ -695,7 +630,8 @@ function purifyString(string) {
 आकांक्षी डेटा वैज्ञानिक
 */
 
-/* login.js content handling below this part */
+
+/* communications with login.js file below */
 
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
   if (msg.todo == "loggingin") {
@@ -737,7 +673,6 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
   if (msg.todo == "logout_extension") {
     console.log("Logging out from extension.");
     iframe = removeIframe("slidermenuiframe", "./login.html");
-    //iframe = SetupIframe("./login.html");
     appendIframe(iframe);
     toggle();
 
