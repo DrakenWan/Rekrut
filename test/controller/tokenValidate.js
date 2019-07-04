@@ -1,4 +1,4 @@
-const devmode = true;
+const devmode = false;
 const mongoclient = require('../node_modules/mongodb').MongoClient;
 const URL = "mongodb://localhost:27017/";
 const DBNAME = "RekrutSandbox";

@@ -1,4 +1,4 @@
-const devmode = true;
+const devmode = false;
 var manifest = chrome.runtime.getManifest();
 var appName = manifest.name;
 var appVersion = manifest.version;

@@ -1,6 +1,6 @@
 const mongoclient = require('mongodb').MongoClient;
 const URL = "mongodb://localhost:27017/"
-const devmode = true;
+const devmode = false;
 
 //authorize your rekruter user
 var authorize = function (dbName, collectionName, object, callback) {

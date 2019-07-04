@@ -1,4 +1,4 @@
-const devmode = true;
+const devmode = false;
 
 var user = {
     name: "",
