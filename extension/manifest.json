@@ -18,6 +18,7 @@
         "js": ["./js/content.js"],
         "css": ["./css/slider.css"]
     }],
+    "homepage_url": "https://github.com/drakenwan/rekrut",
     "manifest_version": 2,
     "permissions": ["storage", "tabs", "activeTab", "<all_urls>", "declarativeContent", "notifications", "http://*:*/"],
     "web_accessible_resources": ["login.html", "slider.html", "/css/slider.css", "/js/login.js", "/js/slider.js", "/js/material/material.min.css", "/js/material/material.min.js", "/js/material/material-design-iconic-font.min.css", "./js/material/icon.css"]
