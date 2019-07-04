@@ -1,6 +1,7 @@
+// coding with restrictions on creativity will never bring the best for anyone
 const HOST = 'localhost'
 const isSecure = false;
-const devmode = true;
+const devmode = false; // if set to true will start developer mode on extension reload
 const SERVER_URL = ((isSecure && !devmode) ? "https://" : "http://") + HOST + ":3000/"
 
 var resp = { //response object
@@ -518,7 +519,7 @@ xhr.onreadystatechange = function () {
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
   if (msg.todo == "auto_extraction_notbutton") {
     var isReached = false;
-    var count = 2;
+    var count = 5;
     while (!isReached) {
       if (count == 0) isReached = true;
       if (!isReached) {
@@ -527,6 +528,7 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
         count--;
       }
     }
+    window.scrollTo(0, 0);
     extraction(); //to add some spice
     window.addEventListener("scroll", extraction);
     //extraction function to extract the details from linkedin profile
