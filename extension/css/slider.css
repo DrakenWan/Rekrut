@@ -133,6 +133,10 @@ section:after {
     font-size: 12px;
 }
 
+.tooltippara {
+    line-height: 1.2;
+    margin: 10px;
+}
 #mdl-button {
     background-color: #4875B4;
 }

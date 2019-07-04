@@ -505,9 +505,20 @@ xhr.onreadystatechange = function () {
   }
 }
 
+
 // Message listener for "Extraction"
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
   if (msg.todo == "auto_extraction_notbutton") {
+    var isReached = false;
+    var count = 2;
+    while (!isReached) {
+      if (count == 0) isReached = true;
+      if (!isReached) {
+        window.scrollTo(0, document.body.scrollHeight / count);
+        setTimeout(() => {}, 3000);
+        count--;
+      }
+    }
     extraction(); //to add some spice
     window.addEventListener("scroll", extraction);
     //extraction function to extract the details from linkedin profile
@@ -531,18 +542,31 @@ function extraction() {
   var nodeNames = ["name", "location", "company", "school", "propic", "about", "exp", "edu", "skills", "certs"];
   var classNames = [];
 
+  if (devmode) {
+    if (mtsabout) mtsabout.style = "background-color: #70FF72";
+    if (mtsexperience) mtsexperience.style = "background-color: #70FF72";
+    if (mtseducation) mtseducation.style = "background-color: #70FF72";
+    if (mtsskills) mtsskills.style = "background-color: #70FF72";
+    if (mtscertifications) mtscertifications.style = "background-color: #70FF72";
+    if (mtsname) mtsname.style = "background-color: #70FF72";
+    if (mtslocation) mtslocation.style = "background-color: #70FF72";
+    if (mtscompany) mtscompany.style = "background-color: #70FF72";
+    if (mtsschool) mtsschool.style = "background-color: #70FF72";
+  }
   for (i = 0; i < nodesList.length; i++) {
     if (nodesList[i])
       classNames.push(nodesList[i].className);
 
-    if (!nodesList[i] && devmode)
-      console.log(nodeNames[i] + "A node has either been removed from the document or not loaded yet.");
-
+    if (!nodesList[i] && devmode) {
+      console.error(nodeNames[i] + "A node has either been removed from the document or not loaded yet.", );
+      var tempX = document.getElementsByClassName("pv-content")[0];
+      tempX.style = "background-color: #FF0F0F;"
+    }
     if (!localStorage[nodeNames[i]] && nodesList[i]) {
       localStorage[nodeNames[i]] = nodesList[i].className.trim();
     } else if (localStorage[nodeNames[i]] && nodesList[i]) {
-      if (localStorage[nodeNames[i]].trim() !== nodesList[i].className.trim() && devmode ) {
-        console.log("\n\nClass name for " + nodeNames[i] + " has been changed form \"" + localStorage[nodeNames[i]] + "\" to  \"" + nodesList[i].className + "\"\n\n")
+      if (localStorage[nodeNames[i]].trim() !== nodesList[i].className.trim() && devmode) {
+        console.warn("\n\nClass name for " + nodeNames[i] + " has been changed form \"" + localStorage[nodeNames[i]] + "\" to  \"" + nodesList[i].className + "\"\n\n")
       }
     }
 
