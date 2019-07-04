@@ -19,6 +19,8 @@ You need to ensure that you have the following dependencies installed within you
 3. Now that your server is running, ensure that your mongodb server is running in the background. It must be running by default (it runs on startup of PC).  
 4. Open chrome browser. Type <code>chrome://extensions</code>. Turn on `developer mode`. Click on the button `Load unpacked extension`. Browse the Rekrut-master folder and select ''extension'' folder. The extension is installed within your browser!
 
+5. If the mongodb URL and port are different then you need to change it in the code.
+
 > The extension will only work on [linkedin.com](https://www.linkedin.com) and only extract viable information from [linkedin.com/in/{profileurl}](https://www.linkedin.com/feed) pages. You will also need to login first.  
 
 ### Registering your own details of authentication
