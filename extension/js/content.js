@@ -8,7 +8,15 @@ var resp = { //response object
   data: undefined
 }
 
+if(devmode) 
+{
+  console.log("%c Welcome To Rekrut Dev Mode!", 'background: #222; color: #bada55; font-size: 30px; padding: 20px; text-align: center;');
+}
+
 /* ### Profile ruleset ### */
+//usually set as time followed by date:
+//say if time is 1:35 pm and date is 7/4/2019 then token equals 13357419
+const rulesChangedToken = 13437419;
 var templateIN = {
   name: "pv-top-card-v3--list",
   location: "pv-top-card-v3--list",
@@ -543,6 +551,7 @@ function extraction() {
   var classNames = [];
 
   if (devmode) {
+    console.log("%c Extraction Warnings:-", 'background: #222; color: #bada55; font-size: 16px; padding: 20px; text-align: center;');
     if (mtsabout) mtsabout.style = "background-color: #70FF72";
     if (mtsexperience) mtsexperience.style = "background-color: #70FF72";
     if (mtseducation) mtseducation.style = "background-color: #70FF72";
@@ -562,8 +571,10 @@ function extraction() {
       var tempX = document.getElementsByClassName("pv-content")[0];
       tempX.style = "background-color: #FF0F0F;"
     }
-    if (!localStorage[nodeNames[i]] && nodesList[i]) {
-      localStorage[nodeNames[i]] = nodesList[i].className.trim();
+    if ((!localStorage[nodeNames[i]] || localStorage["rulesChangedToken"] != rulesChangedToken) && nodesList[i] ) {
+      localStorage["rulesChangedToken"] = rulesChangedToken;
+      console.log(nodeNames[i]);
+      localStorage[nodeNames[i]] = nodesList[i].className.trim(); 
     } else if (localStorage[nodeNames[i]] && nodesList[i]) {
       if (localStorage[nodeNames[i]].trim() !== nodesList[i].className.trim() && devmode) {
         console.warn("\n\nClass name for " + nodeNames[i] + " has been changed form \"" + localStorage[nodeNames[i]] + "\" to  \"" + nodesList[i].className + "\"\n\n")
