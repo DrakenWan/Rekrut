@@ -117,9 +117,7 @@ app.use('/error', function (req, res, ) {
 	res.end();
 });
 
-//secure server listener
-//it is valid for 5 years duration
-
+// valid for five years
 if(isSecure) {
 	  server = https.createServer({
 		key: fs.readFileSync('./key.pem'),

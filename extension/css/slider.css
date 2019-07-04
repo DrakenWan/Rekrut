@@ -1,19 +1,17 @@
-body{
+body {
     vertical-align: middle;
 }
 
-.slider-content
-{
+.slider-content {
     text-align: center;
 }
 
-abbr{
+abbr {
     text-decoration: none;
 }
 
 /* --- proPic image ---- */
-#proPic
-{
+#proPic {
     height: 90px;
     width: 90px;
     border-radius: 50%;
@@ -22,13 +20,12 @@ abbr{
     cursor: not-allowed;
 }
 
-.mdl-textfield__input:-webkit-autofill + .mdl-textfield__label {
-    top: -20px; 
+.mdl-textfield__input:-webkit-autofill+.mdl-textfield__label {
+    top: -20px;
     transform: scale(0.75);
 }
 
-#closebtn
-{
+#closebtn {
     z-index: 2;
     left: 5px;
     top: 5px;
@@ -47,9 +44,10 @@ header {
 }
 
 /*Style the section*/
-section{
+section {
     margin: 20px 20px 20px 20px;
 }
+
 /* Clear floats after the columns */
 section:after {
     content: "";
@@ -63,28 +61,26 @@ section:after {
     padding: 10px 10px 10px 10px;
     text-align: center;
     color: white;
-    position:fixed;
+    position: fixed;
     width: 100%;
     clear: both;
-    bottom:0;
-    left:0;
-    right:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
-#myhead, #myfoot
-{
+#myhead,
+#myfoot {
     box-shadow: 0 0 10px slategray;
     z-index: 2;
 }
 
-#author
-{
+#author {
     cursor: pointer;
 }
 
-#author:hover
-{
- box-shadow: 0 0 10px white;   
+#author:hover {
+    box-shadow: 0 0 10px white;
 }
 
 
@@ -99,15 +95,15 @@ section:after {
     margin: 5px 5px 5px 5px;
     font-weight: bold;
     font-size: 12px;
-  }
-  
-  .tooltip1:hover
-  {
+}
+
+.tooltip1:hover {
     box-shadow: 0 0 10px #4875B4;
     transition: 0.3s;
-  }
-  /* Tooltip text */
-  .tooltip1 .tooltiptext1 {
+}
+
+/* Tooltip text */
+.tooltip1 .tooltiptext1 {
     visibility: hidden;
     width: 250px;
     background-color: black;
@@ -116,7 +112,7 @@ section:after {
     padding: 5px 0;
     padding-right: 15px;
     border-radius: 6px;
-   
+
     /* Position the tooltip text - see examples below! */
     position: absolute;
     top: 40px;
@@ -124,34 +120,31 @@ section:after {
     right: 105%;
     font-size: 12px;
     text-align: center;
-  }
-  
-/* Show the tooltip text when you mouse over the tooltip container */
-.tooltip1:hover .tooltiptext1 {
-visibility: visible;
 }
 
-.labels
-{
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip1:hover .tooltiptext1 {
+    visibility: visible;
+}
+
+.labels {
     float: left;
     color: #4875B4;
     font-size: 12px;
 }
 
-#mdl-button
-{
-    background-color:#4875B4;
+#mdl-button {
+    background-color: #4875B4;
 }
 
-#loader-section
-{
-    /* border: 2px solid; red; */ /*for testing only */
+#loader-section {
+    /* border: 2px solid; red; */
+    /*for testing only */
     height: 400px;
     vertical-align: middle;
 }
 
-#loader
-{
+#loader {
     border: 16px solid #b8b8b8;
     border-radius: 50%;
     border-top: 16px solid #4875B4;
@@ -163,45 +156,47 @@ visibility: visible;
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
-#loginsect
-{
+#loginsect {
     text-align: center;
     vertical-align: middle;
 }
 
-#extractdatapage
-{
+#extractdatapage {
     margin-bottom: 100px;
 }
 
-#logout-button
-{
+#logout-button {
     position: fixed;
     bottom: 5px;
     right: 5px;
     z-index: 3;
 }
 
-#logout-icon
-{
+#logout-icon {
     height: 0.6em;
     width: 0.6em;
     cursor: pointer;
-    filter: invert(94%) /*sepia(100%) saturate(0%) hue-rotate(149deg) brightness(102%) contrast(102%)*/;
+    filter: invert(94%)
+        /*sepia(100%) saturate(0%) hue-rotate(149deg) brightness(102%) contrast(102%)*/
+    ;
     box-shadow: 0 0 30px #B78A4B;
     border-radius: 35px;
     transform: rotate(0deg);
     transition: 0.5s;
 }
 
-#logout-icon:hover
-{
+#logout-icon:hover {
     height: 0.7em;
     width: 0.7em;
     transform: rotate(360deg);
-    transition: 0.5s; 
+    transition: 0.5s;
 }

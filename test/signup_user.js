@@ -4,9 +4,10 @@
      directly 
    > Created for testing purposes
    > Supposed to give credentials when running the executable in cmdline
+   like so: [node signup_user.js username password]
 */
 const crypto = require('crypto')
-const key = "darwinbox"; //weak key //use something strong //if an attacker targets the system they will easily decipher the hmac with bruteforce
+const key = "darwinbox";
 const mongoclient = require('mongodb').MongoClient;
 const URL = "mongodb://localhost:27017/";
 const DBNAME = "RekrutSandbox";

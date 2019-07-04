@@ -1,5 +1,6 @@
 const mongoclient = require('mongodb').MongoClient;
 const URL = "mongodb://localhost:27017/"
+const devmode = true;
 
 //authorize your rekruter user
 var authorize = function (dbName, collectionName, object, callback) {
@@ -20,15 +21,15 @@ var authorize = function (dbName, collectionName, object, callback) {
           };
           dbo.collection(collectionName).updateOne(query, newval, function (err, res) {
             if (err) throw err;
-            //console.log("Document updated.");
+            if(devmode) console.log("Document updated.");
             return callback(object, 1);
           });
         } else {
-          //console.error("Passwords do not match.");
+          if(devmode) console.error("Passwords do not match.");
           return callback(object, 0);
         }
       } else {
-        //console.error("Username does not exist.")
+        if(devmode) console.error("Username does not exist.")
         return callback(object, -1);
       }
     });

@@ -1,4 +1,4 @@
-//authenticate the rekruter
+const devmode = true;
 const mongoclient = require('../node_modules/mongodb').MongoClient;
 const URL = "mongodb://localhost:27017/";
 const DBNAME = "RekrutSandbox";
@@ -7,7 +7,7 @@ const COLLECTION = "rekruter";
 var validate = function (tokenValue, callback) {
     var flag = 0;
     var checker = "";
-    //console.log(tokenValue);
+    if(devmode) console.log(tokenValue);
     mongoclient.connect(URL, {
         useNewUrlParser: true
     }, function (err, db) {
