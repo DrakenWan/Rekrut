@@ -6,9 +6,9 @@ var sendDB = require("./controller/sendToDB");
 const createToken = require("./createToken");
 var validateToken = require("./controller/tokenValidate");
 var authorize = require("./controller/authorize");
-const DBNAME = process.argv[2];
+const DBNAME = (process.argv[2])? process.argv[2] : "RekrutSandbox";
 const fs = require('fs');
-const PORT = parseInt(process.argv[3]);
+const PORT = (process.argv[3]) ? parseInt(process.argv[3]) : 3000;
 var x = fs.readFileSync("./error.html");
 const isSecure = false;
 
