@@ -217,19 +217,20 @@ var user = {
             data_div = data_div.firstElementChild.firstElementChild.firstElementChild.nextElementSibling.firstElementChild;
             if (data_div) job.position.push(data_div.textContent.trim());
             else job.position.push("");
-            var companyName = data_div.nextElementSibling.lastElementChild;
-            var doe = data_div.nextElementSibling.nextElementSibling;
-            var duration = data_div.nextElementSibling.nextElementSibling;
+            data_div = data_div.nextElementSibling.nextElementSibling;
+            var companyName = data_div;
+            var doe = data_div.nextElementSibling;
+            var duration = data_div.nextElementSibling.lastElementChild;
             var location = data_div.nextElementSibling.nextElementSibling;
 
             if (companyName) job.company = companyName.textContent.trim();
             else job.company = "";
             if (doe) job.doe.push(doe.firstElementChild.lastElementChild.textContent.trim());
             else job.doe.push("");
-            if (duration) job.duration.push(duration.lastElementChild.lastElementChild.textContent.trim());
+            if (duration) job.duration.push(duration.lastElementChild.textContent.trim());
             else job.duration.push("");
             if (location) {
-              if (location.nextElementSibling) job.location.push(location.nextElementSibling.lastElementChild.textContent.trim());
+              if (location.lastElementChild) job.location.push(location.lastElementChild.textContent.trim());
             } else job.location.push("");
             this.experience.push(job);
           }
