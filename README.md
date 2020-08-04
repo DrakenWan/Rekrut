@@ -1,3 +1,5 @@
+<small> I haven't made core changes to this extension for months. So the extraction tool may not work as supposed to. If you feel like making appropriate changes you can enabel developer mode and see the changes made to the linkedin document model and use the navtress for reference. </small>
+
 # Rekrut
 
 Rekrut is a chrome extension that automatically scraps a [linkedin](www.linkedin.com) profile and can be used by recruiters of companies
