@@ -1,10 +1,13 @@
 <p>
-  '''Update'''' ''dated on'': 02/12/2021
+  <h3> Update</h3> 
+  <em>''dated on'': 02/12/2021</em>
+  
+  <p>
   I am going to be making a complete change on Rekrut.
   Simplified down to a client sided extension with server and mongodb modules removed.
   The extension slider frame will be inserted with raw JSON object of profile data extracted.
   
-  I won't extend this functionality. Devs who clone the repo can extend the module and deal with this extracted data whichever way they want.
+  I won't extend this functionality. Devs who clone the repo can extend the module and deal with this extracted data whichever way they want.</p>
   </p>
 <small> I haven't made core changes to this extension for months. So the extraction tool may not work as supposed to. If you feel like making appropriate changes you can enabel developer mode and see the changes made to the linkedin document model and use the navtress for reference. </small>
 
