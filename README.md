@@ -9,6 +9,11 @@
   
   I won't extend this functionality. Devs who clone the repo can extend the module and deal with this extracted data whichever way they want.</p>
   </p>
+  
+  &nbsp;
+  &nbsp;
+  &nbsp;
+  
 <small> I haven't made core changes to this extension for months. So the extraction tool may not work as supposed to. If you feel like making appropriate changes you can enabel developer mode and see the changes made to the linkedin document model and use the navtress for reference. </small>
 
 # Rekrut
