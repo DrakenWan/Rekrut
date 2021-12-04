@@ -1,6 +1,7 @@
-<p>
 <h2 UPDATE  2021</h2>
- <h4>Simplified Version of Rekrut released. Go to [Yale3](https://github.com/DrakenWan/Yale3). The extension doesn't need a server for communication. It doesn't have any Rekrut login or database storage features. The extension works client sided and just prints raw data on a sidebar that appears when you click on the extension icon on a linkedin profile page. Go to the [above link](https://github.com/DrakenWan/Yale3).
+
+<p>
+ Simplified Version of Rekrut released. Go to [Yale3](https://github.com/DrakenWan/Yale3). The extension doesn't need a server for communication. It doesn't have any Rekrut login or database storage features. The extension works client sided and just prints raw data on a sidebar that appears when you click on the extension icon on a linkedin profile page. Go to the [above link](https://github.com/DrakenWan/Yale3).
  </p>
   
   &nbsp;
