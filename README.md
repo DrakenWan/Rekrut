@@ -1,14 +1,7 @@
 <p>
-  <h3> Update</h3> 
-  <em>''dated on'': 02/12/2021</em>
-  
-  <p>
-  I am going to be making a complete change on Rekrut.
-  Simplified down to a client sided extension with server and mongodb modules removed.
-  The extension slider frame will be inserted with raw JSON object of profile data extracted.
-  
-  I won't extend this functionality. Devs who clone the repo can extend the module and deal with this extracted data whichever way they want.</p>
-  </p>
+<h2 UPDATE  2021</h2>
+ <h4>Simplified Version of Rekrut released. Go to [Yale3](https://github.com/DrakenWan/Yale3). The extension doesn't need a server for communication. It doesn't have any Rekrut login or database storage features. The extension works client sided and just prints raw data on a sidebar that appears when you click on the extension icon on a linkedin profile page. Go to the [above link](https://github.com/DrakenWan/Yale3).
+ </p>
   
   &nbsp;
   &nbsp;
